@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7852db">
+  <meta name="description" content="גפן קוראת: תרגול חווייתי של הבנת הנקרא לכיתה ג׳ עם סיפורים, שאלות ומשוב.">
+  <title>גפן קוראת 🌷 | הבנת הנקרא לכיתה ג׳</title>
+  <style>
+    :root{--ink:#27234b;--muted:#77718f;--purple:#7352d5;--purple2:#9779f1;--paper:#ffffff;--line:#e9e6f3;--bg:#f9f8fd;--mint:#dff8ec;--mint-text:#177857;--pink:#fce8f1;--sun:#fff3d8;--shadow:0 16px 50px rgba(60,41,120,.09)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,'Noto Sans Hebrew','Segoe UI',sans-serif;line-height:1.65}
+    button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.55}button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #ffba71;outline-offset:3px}
+    .shell{max-width:1190px;margin:auto;padding:0 26px}.hide{display:none!important}
+    .header{height:80px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;gap:12px;align-items:center;font-weight:900;font-size:22px;letter-spacing:-.7px}.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:15px;background:#efe7ff;font-size:25px}.brand small{display:block;font-size:12px;font-weight:500;color:var(--muted);letter-spacing:0;line-height:1.15;margin-top:2px}.navright{display:flex;gap:12px;align-items:center}.header-pill{border:1px solid var(--line);background:white;color:var(--ink);border-radius:50px;padding:9px 16px;font-size:13px;font-weight:700}.header-pill b{color:var(--purple)}
+    .hero{position:relative;isolation:isolate;overflow:hidden;min-height:295px;background:linear-gradient(118deg,#7b58db 0%,#9878e9 57%,#b6a0ec 100%);color:white;border-radius:32px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;padding:40px 55px;gap:30px}.hero::before{content:"";position:absolute;inset:auto -60px -230px auto;width:520px;height:430px;border:1px solid #ffffff36;border-radius:50%;z-index:-1}.hero::after{content:"";position:absolute;inset:-235px 200px auto auto;width:430px;height:430px;background:#ffffff0b;border-radius:50%;z-index:-1}.hero-copy{max-width:600px}.eyebrow{display:inline-block;border:1px solid #ffffff4c;background:#ffffff25;padding:5px 12px;border-radius:50px;font-size:13px;font-weight:700}.hero h1{font-size:clamp(32px,4.3vw,52px);line-height:1.2;margin:17px 0 15px;letter-spacing:-1.5px}.hero p{font-size:17px;line-height:1.8;max-width:480px;margin:0;color:#f7f1ff}.hero-cta{background:white;color:var(--purple);border:0;border-radius:15px;margin-top:25px;padding:13px 22px;font-weight:800;box-shadow:0 6px 18px #39257724}.hero-cta:hover{transform:translateY(-2px)}
+    .book-art{width:282px;height:216px;flex-shrink:0;position:relative;filter:drop-shadow(0 18px 22px #3d287a35)}.book-back{position:absolute;background:#fbd9e5;border-radius:15px 26px 14px 15px;width:210px;height:149px;left:28px;top:28px;transform:rotate(-15deg)}.book-front{position:absolute;width:195px;height:148px;left:32px;top:45px;border-radius:13px 23px 18px 12px;background:#fff7dc;transform:rotate(7deg);box-shadow:9px 9px 0 #edbbca,10px 10px 0 2px #ffffff2a}.book-front:before{content:"";position:absolute;right:25px;top:30px;width:100px;height:7px;background:#d1c1ec;border-radius:8px;box-shadow:0 23px #d1c1ec,0 46px #d1c1ec,0 69px #d1c1ec}.book-front:after{content:"★";position:absolute;font-size:31px;left:18px;top:12px;color:#f6bc5c}.sparkle{position:absolute;font-size:38px}.sparkle.one{right:8px;top:4px}.sparkle.two{left:0;bottom:2px;font-size:26px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.stat{background:white;border:1px solid var(--line);border-radius:18px;padding:18px 24px;display:flex;align-items:center;gap:15px}.stat-ic{width:45px;height:45px;background:#f0ebff;border-radius:14px;display:grid;place-items:center;font-size:23px}.stat strong{display:block;font-size:23px;line-height:1.1}.stat small{color:var(--muted);font-size:13px}
+    .section-title{margin-top:44px;display:flex;align-items:end;justify-content:space-between;gap:20px}.section-title h2{margin:0 0 3px;font-size:27px;letter-spacing:-.8px}.section-title p{margin:0;color:var(--muted);font-size:15px}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:22px 0}.search{display:flex;align-items:center;background:white;border:1px solid var(--line);border-radius:13px;padding:0 13px;flex:1;min-width:200px}.search input{border:0;background:transparent;width:100%;padding:12px 8px;outline:0;color:var(--ink)}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{border:1px solid var(--line);background:white;color:#555070;padding:10px 15px;border-radius:12px;font-size:13px;font-weight:700}.chip.selected{background:var(--purple);border-color:var(--purple);color:white}.catalog{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.story-card{display:flex;flex-direction:column;min-height:284px;background:white;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 4px 18px #322c6907;transition:transform .16s,box-shadow .16s}.story-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.card-visual{height:118px;position:relative;display:grid;place-items:center;overflow:hidden}.card-visual:before{content:"";position:absolute;width:175px;height:175px;border:2px solid #ffffff72;border-radius:50%;left:-35px;top:-85px}.card-visual:after{content:"";position:absolute;width:90px;height:90px;background:#ffffff35;border-radius:32px;transform:rotate(27deg);right:10%;bottom:-65px}.card-visual span{font-size:66px;filter:drop-shadow(0 5px 4px #0000000c);z-index:1}.card-body{padding:18px 20px 20px;flex:1;display:flex;flex-direction:column}.meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px;font-weight:700}.mini-tag{background:#f5f3fa;color:#736c8d;padding:3px 8px;border-radius:7px}.mini-tag.done{background:#e3f8ed;color:#157350}.story-card h3{font-size:20px;margin:12px 0 4px;line-height:1.4}.story-card p{color:var(--muted);font-size:13px;margin:0 0 17px;line-height:1.7}.card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}.card-foot button{border:0;background:#f1ebff;color:var(--purple);border-radius:10px;padding:9px 12px;font-size:13px;font-weight:800}.card-foot button:hover{background:#e8ddff}.skill{font-size:12px;color:#918aa4}.empty{grid-column:1/-1;padding:60px 24px;text-align:center;border:1px dashed #c9bdea;border-radius:20px;color:var(--muted)}
+    .study-header{display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:12px;flex-wrap:wrap}.back{background:transparent;border:0;font-weight:800;color:var(--purple);padding:12px 0}.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.tool{border:1px solid var(--line);border-radius:11px;background:white;padding:8px 12px;color:#625b7a;font-weight:700;font-size:13px}.tool:hover{background:#f5f0ff}.story-heading{text-align:center;margin:24px auto 21px}.story-heading .category{color:var(--purple);font-size:13px;font-weight:800}.story-heading h1{font-size:clamp(29px,4.2vw,42px);letter-spacing:-1px;margin:8px 0}.story-heading p{color:var(--muted);margin:0}.reading-layout{display:grid;grid-template-columns:minmax(0,1fr) 245px;gap:23px;align-items:start}.paper{background:white;border:1px solid var(--line);border-radius:23px;padding:clamp(23px,4vw,51px);box-shadow:0 8px 32px #2d215808}.paper-inner{max-width:745px;margin:auto}.reading-label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:var(--purple);margin-bottom:26px}.reading-text{font-size:var(--read-size,21px);line-height:2.05;color:#2e2d40}.reading-text p{margin:0 0 20px}.reading-text p:last-child{margin-bottom:0}.ready-wrap{text-align:center;border-top:1px dashed var(--line);margin-top:31px;padding-top:26px}.ready-wrap p{color:var(--muted);font-size:14px;margin:0 0 15px}.primary{background:var(--purple);color:white;border:0;border-radius:14px;padding:13px 23px;font-weight:800;box-shadow:0 5px 13px #724dc12b}.primary:hover{background:#6141c7}.aside{background:white;border:1px solid var(--line);border-radius:19px;padding:21px;position:sticky;top:22px}.aside h3{font-size:16px;margin:0 0 15px}.aside .timeline{display:flex;flex-direction:column;gap:12px}.timeline-step{display:flex;align-items:center;gap:9px;font-size:14px;color:#847b9a}.timeline-step .number{width:27px;height:27px;display:grid;place-items:center;border-radius:50%;background:#f1edfb;color:#6d58ad;font-weight:800;flex-shrink:0}.timeline-step.active{color:#5135a9;font-weight:800}.timeline-step.active .number{background:var(--purple);color:white}.aside-tip{background:#fff7df;border-radius:13px;padding:14px;font-size:13px;margin-top:25px;color:#866326;line-height:1.7}.aside-tip strong{display:block}
+    .questions-section{margin:30px 0 60px;scroll-margin-top:20px}.question-intro{background:linear-gradient(110deg,#f4edff,#ffffff);border:1px solid #e6d9ff;border-radius:19px;padding:22px 25px;margin-bottom:19px;display:flex;gap:12px;align-items:center;justify-content:space-between}.question-intro h2{margin:0;font-size:23px}.question-intro p{margin:2px 0 0;color:var(--muted);font-size:14px}.mode-toggle{display:inline-flex;align-items:center;gap:0;background:#f4f1fa;border:1px solid var(--line);padding:4px;border-radius:11px}.mode-toggle button{border:0;background:transparent;border-radius:8px;padding:7px 11px;font-weight:700;color:#756e88;font-size:13px}.mode-toggle button.active{background:white;color:var(--purple);box-shadow:0 1px 5px #00000015}
+    .qcard{background:white;border:1px solid var(--line);border-radius:20px;padding:25px 27px;margin:15px 0}.qtop{display:flex;gap:10px;align-items:center;margin-bottom:10px}.qnum{display:grid;place-items:center;border-radius:9px;width:32px;height:32px;background:#ede6ff;color:var(--purple);font-weight:900;font-size:15px}.qskill{font-size:12px;color:#817991;background:#f7f5fa;padding:4px 10px;border-radius:30px}.qtitle{font-size:18px;font-weight:800;line-height:1.6;margin:0 0 14px}.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.answer{display:flex;align-items:center;gap:10px;border:1.5px solid #ece9f4;background:white;border-radius:13px;text-align:right;padding:11px 13px;min-height:53px;color:#464158;font-size:15px;transition:border-color .1s,background .1s}.answer:hover{border-color:#ae99f0}.answer.selected{background:#f4f0ff;border-color:#886bdd}.letter{width:27px;height:27px;border-radius:50%;background:#f4f2f9;display:grid;place-items:center;flex-shrink:0;font-weight:800;font-size:13px;color:#766e96}.answer.selected .letter{background:#dccdff;color:#5830b0}.answer.correct{background:#e9f8f1;border-color:#78c9a3}.answer.wrong{background:#fff0f0;border-color:#f1a3a3}.text-answer{width:100%;border:1.5px solid #e4dff1;border-radius:13px;resize:vertical;padding:14px;min-height:96px;outline:none;font-size:16px;background:#fefdff;line-height:1.8}.text-answer:focus{border-color:var(--purple)}.word-counter{text-align:left;font-size:12px;color:var(--muted)}.sequence-hint{font-size:13px;color:var(--muted);margin:-4px 0 12px}.sequence-choice{background:#f7f4ff;border:1px solid #dfd2fa;border-radius:11px;padding:10px 14px;max-width:100%;color:#52379c;font-size:14px;font-weight:700}.sequence-choice[disabled]{opacity:.37}.sequence-list{display:flex;gap:8px;align-items:center;flex-wrap:wrap;min-height:45px;margin:14px 0}.sequence-item{background:#ecf7ef;border:1px solid #bfdfc8;border-radius:10px;padding:9px;font-size:13px}.clear-order{border:0;background:transparent;color:var(--purple);text-decoration:underline;font-weight:700;font-size:13px}.feedback{padding:12px 15px;border-radius:11px;margin-top:13px;font-size:14px;line-height:1.75}.feedback.good{background:#e9f8ef;color:#216b47}.feedback.bad{background:#fff4e5;color:#8a642a}.feedback.neutral{background:#f3f0fb;color:#68598b}.result-panel{margin:28px auto 0;background:#ffffff;border:1px solid #e5dcff;border-radius:22px;padding:28px;text-align:center;box-shadow:var(--shadow)}.result-panel .medal{font-size:49px}.result-panel h2{font-size:25px;margin:8px 0 4px}.result-panel p{color:#746c90;max-width:530px;margin:6px auto 17px}.result-panel strong{color:var(--purple)}.result-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}.secondary{background:#f0ebfb;color:#6442bd;border:0;border-radius:12px;padding:12px 18px;font-weight:800}.review-note{font-size:13px;background:#f8f5ff;border-radius:10px;padding:12px;margin:12px 0}.bottom{margin:70px 0 30px;text-align:center;color:#928da3;font-size:12px}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#2e254a;color:white;border-radius:12px;padding:10px 20px;box-shadow:var(--shadow);z-index:30;font-size:14px;max-width:calc(100% - 30px);text-align:center}.progress-track{width:100%;height:7px;border-radius:20px;background:#f0ebfa;overflow:hidden;margin-top:8px}.progress-track span{height:100%;display:block;background:var(--purple);border-radius:20px;transition:width .2s}
+    @media(max-width:940px){.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}.reading-layout{grid-template-columns:1fr}.aside{position:static;order:-1}.aside .timeline{flex-direction:row;justify-content:space-around}.aside-tip{display:none}.hero{padding:32px}.book-art{transform:scale(.8);width:215px;transform-origin:center left}}
+    @media(max-width:640px){.shell{padding:0 15px}.header{height:67px}.brand{font-size:18px}.logo{width:38px;height:38px}.header-pill{padding:8px 10px;font-size:12px}.hero{border-radius:22px;min-height:280px;padding:28px 25px;align-items:flex-start}.hero h1{font-size:34px}.hero p{font-size:15px}.book-art{position:absolute;left:-64px;bottom:-69px;transform:scale(.55);opacity:.6}.stats{gap:8px}.stat{padding:13px 10px;border-radius:13px;gap:6px}.stat-ic{width:34px;height:34px;font-size:18px}.stat strong{font-size:18px}.stat small{font-size:11px}.section-title{margin-top:32px}.section-title h2{font-size:23px}.controls{flex-direction:column;align-items:stretch}.catalog{grid-template-columns:1fr;gap:14px}.story-card{min-height:235px}.card-visual{height:95px}.card-visual span{font-size:54px}.paper{border-radius:18px;padding:22px 19px}.reading-text{font-size:var(--read-size,19px);line-height:2}.question-intro{align-items:flex-start;gap:15px;flex-direction:column}.answers{grid-template-columns:1fr}.qcard{padding:19px 16px}.qtitle{font-size:17px}.story-heading{margin:10px auto 17px}.study-header{margin-top:8px}.tools{gap:5px}.tool{padding:6px 9px;font-size:12px}.aside{padding:15px}.bottom{margin-top:45px}}
+    @media print{body{background:white}.header,.hero,.stats,.controls,.section-title,.catalog,.study-header,.aside,.ready-wrap,.question-intro .mode-toggle,.result-panel,.bottom,.toast,.clear-order,.feedback{display:none!important}.shell{max-width:none;padding:0}.reading-layout{display:block}.paper{padding:12px;border:0;box-shadow:none}.reading-text{font-size:15px!important;line-height:1.65}.reading-text p{margin-bottom:10px}.story-heading{margin:0 0 14px}.questions-section{display:block!important;margin:10px 0}.question-intro{padding:0;border:0;background:none;margin:0}.qcard{break-inside:avoid;padding:9px 0;border:0;border-bottom:1px dashed #ddd;margin:0}.qtitle{font-size:13px;margin:2px 0 6px}.answer{font-size:12px;min-height:30px;padding:3px 7px}.answer.selected,.answer.correct,.answer.wrong{background:white!important;border-color:#ddd!important}.letter{width:20px;height:20px}.text-answer{height:62px;min-height:62px}.sequence-choice{font-size:11px}.questions-section{page-break-before:always}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+ <div class="shell">
+   <header class="header"><div class="brand"><div class="logo">🌷</div><div>גפן קוראת<small>מגלים סיפורים. מבינים יותר.</small></div></div><div class="navright"><div class="header-pill">🎒 כיתה ג׳</div><div class="header-pill" id="headProgress">⭐ <b>0</b> הושלמו</div></div></header>
+   <main id="home">
+     <section class="hero"><div class="hero-copy"><span class="eyebrow">✨ הרפתקת הקריאה שלך מתחילה כאן</span><h1>כל סיפור הוא<br>עולם חדש 🌈</h1><p>קוראים סיפור, עונים על שאלות ומגלים כמה דברים כבר יודעים. בדרך למבחן — בקצב שלך, גפן!</p><button class="hero-cta" id="startFirst">בואי נתחיל לקרוא ←</button></div><div class="book-art" aria-hidden="true"><div class="book-back"></div><div class="book-front"></div><span class="sparkle one">✨</span><span class="sparkle two">⭐</span></div></section>
+     <section class="stats"><div class="stat"><div class="stat-ic">📚</div><div><strong id="countStories">10</strong><small>קטעי קריאה</small></div></div><div class="stat"><div class="stat-ic">✅</div><div><strong id="countDone">0</strong><small>תרגולים שהושלמו</small></div></div><div class="stat"><div class="stat-ic">💜</div><div><strong id="countQuestions">80</strong><small>שאלות לחשיבה</small></div></div></section>
+     <div class="section-title" id="library"><div><h2>בוחרים סיפור 📖</h2><p>אפשר להתחיל בקל, או לבחור אתגר חדש.</p></div></div>
+     <div class="controls"><div class="search">🔎 <input id="search" type="search" placeholder="איזה סיפור בא לך לקרוא?" aria-label="חיפוש סיפור"></div><div class="chips" id="filters"><button class="chip selected" data-level="all">הכול</button><button class="chip" data-level="easy">🌱 קל</button><button class="chip" data-level="medium">🌿 בינוני</button><button class="chip" data-level="hard">🌳 מאתגר</button></div></div>
+     <section class="catalog" id="cards" aria-live="polite"></section>
+   </main>
+   <main id="study" class="hide">
+     <div class="study-header"><button class="back" id="backHome">→ חזרה לכל הסיפורים</button><div class="tools"><button class="tool" id="smaller" aria-label="הקטנת טקסט">א−</button><button class="tool" id="bigger" aria-label="הגדלת טקסט">א+</button><button class="tool" id="print">🖨️ הדפסה</button></div></div>
+     <div class="story-heading"><div class="category" id="studyMeta"></div><h1 id="storyTitle"></h1><p id="studyDescription"></p></div>
+     <div class="reading-layout"><article class="paper" id="readingPaper"><div class="paper-inner"><div class="reading-label">📖 &nbsp;זמן לקרוא בנחת</div><div class="reading-text" id="readingText"></div><div class="ready-wrap"><p>סיימת לקרוא? נהדר! עכשיו נבדוק מה הבנת.</p><button class="primary" id="toQuestions">מוכנה לשאלות? 👇</button></div></div></article><aside class="aside"><h3>הדרך להצלחה ✨</h3><div class="timeline"><div class="timeline-step active" id="stepRead"><span class="number">1</span> קוראים</div><div class="timeline-step" id="stepAnswer"><span class="number">2</span> עונים</div><div class="timeline-step" id="stepReview"><span class="number">3</span> לומדים</div></div><div class="aside-tip"><strong>💡 טיפ קטן</strong>מותר לחזור לסיפור בכל רגע! חפשי בטקסט את הרמזים לתשובה.</div><div class="progress-track"><span id="answerBar" style="width:0%"></span></div></aside></div>
+     <section class="questions-section" id="questionsSection"><div class="question-intro"><div><h2>ועכשיו — השאלות! ✏️</h2><p>עני לפי הסיפור. בשאלות הכתיבה כדאי לכתוב משפט שלם.</p></div><div class="mode-toggle" id="modeToggle"><button class="active" data-mode="practice">תרגול</button><button data-mode="exam">דמוי מבחן</button></div></div><div id="questions"></div><div id="results" class="hide"></div><div id="submitWrap" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:25px 0"><button class="primary" id="submitAnswers">סיימתי! בדקו לי תשובות ✨</button><span style="font-size:13px;color:#827998" id="answersStatus"></span></div></section>
+   </main>
+   <footer class="bottom">נבנה באהבה לתרגול הבנת הנקרא לכיתה ג׳ 🌷 · הסיפורים מקוריים · ההתקדמות נשמרת במכשיר הזה בלבד</footer>
+ </div>
+ <div class="toast hide" id="toast" role="status"></div>
+ <script>
+ 'use strict';
+ // All passages and questions are original, crafted for Hebrew reading comprehension in grade 3.
+ const STORIES = [
+  {
+    id:'blue-notebook', title:'המחברת הכחולה', level:'easy', kind:'סיפור', icon:'📘', tint:'#e2eaff', description:'תעלומה קטנה בתחילת יום הלימודים.', skill:'פרטים ורצף אירועים',
+    paragraphs:[
+      'ביום ראשון הגיעה נועה לבית הספר מוקדם מהרגיל. היא התיישבה ליד השולחן, פתחה את התיק וחיפשה את מחברת העברית שלה. המחברת, שעל כריכתה היה ציור של לווייתן כחול, לא הייתה שם. נועה בדקה שוב ושוב את כל התאים בתיק, אבל מצאה רק את קופסת האוכל ואת הקלמר.',
+      '"אולי השארתי אותה בבית?" חשבה בדאגה. בדיוק אז נכנס לכיתה עידו, חבר של נועה. הוא שם לב שנועה נראית עצובה ושאל מה קרה. כששמע על המחברת, הציע לחשוב יחד היכן השתמשה בה בפעם האחרונה.',
+      'נועה נזכרה שאתמול, אחרי השיעור, הלכה לספרייה כדי לסיים לכתוב סיפור. השניים ניגשו לספרייה ושאלו את הספרנית אם ראתה מחברת כחולה. הספרנית חייכה ושלפה מחברת שהונחה ליד חלון הספרייה. על הכריכה הופיע לווייתן כחול גדול.',
+      'נועה הודתה לספרנית ולעידו וחזרה לכיתה בדיוק כשהצלצול נשמע. היא החליטה שמעתה תבדוק את השולחן לפני שתעזוב מקום שבו למדה. עידו אמר בחיוך: "לפעמים צריך רק לזכור מה עשינו אתמול."'
+    ],
+    questions:[
+      c('מה היה מצויר על כריכת המחברת של נועה?',['פרפר צהוב','לווייתן כחול','עץ ירוק','שמש כתומה'],1,'איתור פרטים','על הכריכה היה ציור של לווייתן כחול.'),
+      c('היכן השתמשה נועה במחברת בפעם האחרונה?',['בחצר','בחדר המחשבים','בספרייה','באולם הספורט'],2,'איתור פרטים','נועה נזכרה שכתבה בספרייה אחרי השיעור.'),
+      c('מדוע עידו שאל את נועה מה קרה?',['כי ראה שהיא עצובה','כי רצה את הקלמר שלה','כי הספרייה הייתה סגורה','כי המורה ביקשה'],0,'הסקת מסקנות','עידו הבחין שנועה נראית עצובה ולכן התעניין.'),
+      c('מה פירוש המילה "שלפה" במשפט "הספרנית חייכה ושלפה מחברת"?',['ציירה','הסתירה','הוציאה במהירות','קרעה'],2,'אוצר מילים','"שלפה" פירושו הוציאה ממקום כלשהו.'),
+      c('מה החליטה נועה לעשות להבא?',['לא להיכנס לספרייה','לבדוק את השולחן לפני שהיא עוזבת','להחליף את המחברת בכל יום','להגיע מאוחר לבית הספר'],1,'הבנת מסר','בסיום נועה מחליטה לבדוק את השולחן לפני היציאה.'),
+      o('סדרי את האירועים לפי מה שקרה בסיפור.',['הספרנית מצאה את המחברת ליד החלון','נועה גילתה שהמחברת חסרה','עידו הציע להיזכר במקום האחרון'],[1,2,0],'קודם נועה גילתה את הבעיה, אחר כך עידו עזר לה לחשוב, ולבסוף הספרנית החזירה את המחברת.'),
+      t('למה לדעתך עידו היה חבר טוב בסיפור? הסבירי בעזרת מעשה שעשה.','עידו היה חבר טוב כי ראה שנועה עצובה, הקשיב לה ועזר לה לחפש את המחברת.','הסקה והנמקה'),
+      t('כתבי כותרת אחרת שמתאימה לסיפור והסבירי מדוע בחרת בה.','אפשר לקרוא לסיפור "התעלומה בספרייה", כי שם נמצאה המחברת שנעלמה.','הבעה בכתב')
+    ]
+  },
+  {
+    id:'rain-trip', title:'הטיול שהפתיע את כולם', level:'easy', kind:'סיפור', icon:'🌦️', tint:'#dbf3f5', description:'יום בטבע שלא התנהל בדיוק לפי התוכנית.', skill:'סיבה ותוצאה',
+    paragraphs:[
+      'ביום שלישי יצאה כיתה ג׳ לטיול קצר בשביל היער. בבוקר היו השמיים בהירים, וכל הילדים חבשו כובעים והכניסו בקבוקי מים לתיקים. המורה מאיה ביקשה מהם ללכת בזוגות ולא להתרחק מהקבוצה.',
+      'אחרי חצי שעה הבחינה רוני בעננים אפורים שמתקרבים. "אולי ירד גשם", אמרה לחברתה תמר. תחילה נפלו רק טיפות מעטות, אבל כעבור כמה דקות התחזק הגשם. המורה הובילה את הכיתה אל מבנה מקורה שנמצא ליד שביל הטיול. כל הילדים נכנסו אליו בבטחה.',
+      'תמר גילתה ששכחה את המעיל בבית והתחילה לרעוד מקור. רוני הוציאה מתיקה צעיף נוסף והציעה לה להשתמש בו. בזמן שהמתינו, סיפרה המורה איך הגשם עוזר לצמחים ולבעלי החיים ביער. הילדים הקשיבו לרעש הטיפות על הגג.',
+      'כעבור זמן קצר פסק הגשם. השמש יצאה, ועל העלים נצצו טיפות מים. הכיתה חזרה לאוטובוס במסלול שקבעה המורה. "לא ראינו את כל מה שתכננו", אמרה תמר, "אבל למדנו משהו שלא חשבנו עליו."'
+    ],
+    questions:[
+      c('באיזה יום יצאה הכיתה לטיול?',['יום ראשון','יום שלישי','יום חמישי','יום שישי'],1,'איתור פרטים','הסיפור נפתח במילים "ביום שלישי".'),
+      c('מה ביקשה המורה מהילדים בתחילת הטיול?',['לרוץ קדימה','ללכת בזוגות ולא להתרחק','לאסוף פרחים','להשאיר את המים באוטובוס'],1,'איתור פרטים','המורה ביקשה ללכת בזוגות ולהישאר עם הקבוצה.'),
+      c('מדוע נכנסה הכיתה למבנה המקורה?',['כדי לאכול ארוחת צהריים','כדי להסתתר מהשמש','כדי להיות מוגנים מהגשם','כדי לפגוש כיתה אחרת'],2,'סיבה ותוצאה','הגשם התחזק ולכן המורה הובילה את הכיתה למקום מקורה.'),
+      c('מה אפשר ללמוד על רוני מהמעשה שלה?',['שהיא אוהבת לרוץ','שהיא רגישה לצרכים של אחרים','שהיא שכחה את התיק','שהיא לא אוהבת גשם'],1,'הסקת מסקנות','רוני ראתה שלתמר קר והציעה לעזור לה.'),
+      c('מה פירוש הביטוי "פסק הגשם"?',['הגשם התגבר','הגשם התחיל','הגשם הפסיק לרדת','הגשם הפך לשלג'],2,'אוצר מילים','"פסק" פירושו חדל או הפסיק.'),
+      o('מה היה סדר האירועים?',['הילדים המתינו בתוך המבנה','הילדים יצאו לטיול בשמש','השמש יצאה לאחר הגשם'],[1,0,2],'בהתחלה היה שמשי, אחר כך ירד גשם והילדים המתינו, ולבסוף השמש יצאה.'),
+      t('מה למדו הילדים מהטיול אף שלא הספיקו לראות הכול?','הם למדו כיצד הגשם מועיל לטבע, וגם שכדאי להתנהג בגמישות כאשר התוכניות משתנות.','הבנת מסר'),
+      t('מה היית מכניסה לתיק לפני טיול כזה? כתבי שני דברים והסבירי.','הייתי לוקחת מעיל קל כי מזג האוויר יכול להשתנות, ובקבוק מים כדי לשתות בדרך.','הבעה בכתב')
+    ]
+  },
+  {
+    id:'book-fair-notice', title:'הודעה על יריד הספרים', level:'easy', kind:'טקסט שימושי', icon:'📝', tint:'#ffedce', description:'קוראים מודעה ומגלים את הפרטים החשובים.', skill:'איתור מידע ממודעה',
+    paragraphs:[
+      'תלמידים ותלמידות יקרים, מועצת התלמידים מזמינה אתכם ליריד החלפת ספרים בבית הספר "נרקיס".',
+      'מתי? ביום רביעי, 18 בנובמבר, בשעות 16:00–18:00. איפה? בספריית בית הספר, בקומה הראשונה.',
+      'איך משתתפים? מביאים עד שלושה ספרי קריאה במצב טוב, שמתאימים לילדי בית הספר. על כל ספר שמוסרים מקבלים כרטיס החלפה אחד. בעזרת כל כרטיס אפשר לבחור ספר אחר מהיריד. חשוב לכתוב את השם על שקית הספרים, אך לא על הספרים עצמם.',
+      'אפשר להגיע גם בלי ספרים כדי לעיין בספרים ולשמוע המלצות של ילדים אחרים. עם זאת, כדי לקחת ספר הביתה צריך להציג כרטיס החלפה.',
+      'ילדים מכיתות א׳–ג׳ מתבקשים להגיע עם מבוגר. במקרה של שינוי במקום היריד תפורסם הודעה בלוח המודעות ליד הכניסה לבית הספר.',
+      'מחכים לכם! צוות מועצת התלמידים.'
+    ],
+    questions:[
+      c('באיזה יום מתקיים היריד?',['שלישי','רביעי','חמישי','שבת'],1,'איתור פרטים','במודעה מצוין יום רביעי.'),
+      c('היכן יתקיים היריד לפי המודעה?',['באולם הספורט','בחצר','בספריית בית הספר','בכיתה ג׳'],2,'איתור פרטים','היריד מתוכנן בספרייה שבקומה הראשונה.'),
+      c('כמה כרטיסי החלפה יקבל ילד שיביא שני ספרים מתאימים?',['כרטיס אחד','שני כרטיסים','שלושה כרטיסים','אף כרטיס'],1,'יישום מידע','על כל ספר שמוסרים מקבלים כרטיס אחד, ולכן על שני ספרים מקבלים שני כרטיסים.'),
+      c('מה צריך כדי לקחת ספר הביתה?',['כרטיס החלפה','מחברת עברית','כסף מזומן','הזמנה אישית'],0,'איתור מידע','לפי ההודעה, מי שרוצה לקחת ספר צריך כרטיס החלפה.'),
+      c('לאן צריך לפנות אם רוצים לדעת על שינוי במקום היריד?',['לספרי הלימוד','ללוח המודעות ליד הכניסה','לחנות הספרים','למגרש הכדורגל'],1,'איתור מידע','ההודעה מתארת היכן יתפרסם שינוי במקום האירוע.'),
+      o('סדרי את שלבי ההחלפה לפי המודעה.',['בוחרים ספר אחר','מוסרים ספר מתאים','מקבלים כרטיס החלפה'],[1,2,0],'מוסרים ספר, מקבלים כרטיס ובוחרים ספר אחר.'),
+      t('דנה לומדת בכיתה ג׳ ורוצה להגיע ליריד. מה עליה לזכור לגבי הליווי?','דנה צריכה להגיע עם מבוגר, כי במודעה כתוב שילדי כיתות א׳–ג׳ מתבקשים להגיע עם מבוגר.','יישום מידע'),
+      t('למה לדעתך כדאי לערוך יריד שבו מחליפים ספרים במקום לזרוק אותם?','כך ספרים ממשיכים לשמש ילדים אחרים, אפשר לגלות סיפורים חדשים ולצמצם בזבוז.','הבעת דעה')
+    ]
+  },
+  {
+    id:'class-garden', title:'הגינה שמאחורי הכיתה', level:'medium', kind:'סיפור', icon:'🌻', tint:'#e0f3d2', description:'שלושה חברים מנסים לגדל משהו יחד.', skill:'הסקה ופתרון בעיה',
+    paragraphs:[
+      'מאחורי כיתה ג׳ הייתה פינה מוזנחת. האדמה הייתה יבשה, וליד הקיר נערמו עלים ישנים. יום אחד הציעה יעל להפוך את המקום לגינה קטנה. המורה הסכימה, בתנאי שהילדים יכינו תוכנית ויטפלו בגינה לאורך זמן.',
+      'יעל, אורי ומאיה חילקו ביניהם משימות: אורי הביא כלי עבודה קטנים, מאיה הכינה שלטים עם שמות הצמחים, ויעל בדקה אילו זרעים מתאימים לעונה. יחד ניקו את הפינה, הכינו ערוגות ושתלו זרעי צנונית ופרחים.',
+      'בכל בוקר השקתה הקבוצה את הערוגות לפי הוראות המורה. לאחר שבוע הופיעו עלים ירוקים בערוגת הצנוניות, אך בערוגת הפרחים כמעט לא נראה שינוי. מאיה התעצבה. "אולי הזרעים שלנו לא טובים", אמרה.',
+      'יעל שמה לב שערוגת הפרחים נמצאת רוב היום בצל הקיר. הילדים שאלו את המורה אם ייתכן שזו הסיבה. יחד בדקו את ההוראות שעל אריזת הזרעים וגילו שהפרחים זקוקים לשעות רבות של אור שמש. הם בחרו מקום מואר יותר ושתלו בו זרעים חדשים.',
+      'כעבור שלושה שבועות פרחו בגינה פרחים ראשונים. על אחד השלטים הוסיפו הילדים משפט: "כשמשהו לא מצליח, בודקים, לומדים ומנסים שוב."'
+    ],
+    questions:[
+      c('מה התנאי שהציבה המורה להקמת הגינה?',['לשתול רק עצים','להכין תוכנית ולטפל בגינה לאורך זמן','לשתול רק פרחים אדומים','לעבוד בלי עזרת חברים'],1,'איתור פרטים','המורה הסכימה בתנאי שתהיה תוכנית וטיפול מתמשך.'),
+      c('מה הייתה המשימה של מאיה?',['להביא כלי עבודה','לבדוק זרעים מתאימים','להכין שלטים עם שמות הצמחים','לסדר את הספרייה'],2,'איתור פרטים','מאיה הכינה את השלטים.'),
+      c('איזו בעיה התגלתה בערוגת הפרחים?',['הציפורים אכלו את כולם','לא צמח בה כמעט דבר','היא הייתה מוצפת במים','הפרחים צמחו מהר מדי'],1,'הבנת בעיה','אחרי שבוע כמעט לא נראה שינוי בערוגת הפרחים.'),
+      c('כיצד גילו הילדים מה כדאי לשנות?',['ניחשו בלי לבדוק','קראו את הוראות הזרעים והתייעצו עם המורה','ביקשו לצבוע את הקיר','החליטו להפסיק להשקות'],1,'תהליך חשיבה','הם בדקו את אריזת הזרעים וגילו את הצורך באור.'),
+      c('מהי המשמעות של הביטוי "פינה מוזנחת"?',['מקום שלא מטפלים בו','מקום חדש ומבריק','פינה סודית','מקום גדול מאוד'],0,'אוצר מילים','"מוזנחת" מתארת מקום שלא דואגים לו כראוי.'),
+      o('סדרי לפי הסיפור.',['שתלו זרעים מחדש במקום מואר','גילו שהפרחים אינם צומחים','הכינו ערוגות ושתלו זרעים'],[2,1,0],'תחילה שתלו, אחר כך הבחינו בקושי, ואז שינו את המקום.'),
+      t('למה לדעתך ערוגת הצנוניות הצליחה לפני ערוגת הפרחים? הסתמכי על הטקסט.','ערוגת הפרחים הייתה בצל, והילדים גילו שזרעי הפרחים צריכים הרבה שמש. ייתכן שערוגת הצנוניות קיבלה תנאים מתאימים יותר.','הסקה'),
+      t('מה המסר של המשפט שהילדים כתבו על השלט? הביאי דוגמה מהסיפור.','כאשר נתקלים בקושי, לא חייבים לוותר. הילדים בדקו מדוע הפרחים לא צמחו וניסו שוב במקום אחר.','הבנת מסר')
+    ]
+  },
+  {
+    id:'lost-invitation', title:'ההזמנה שלא הגיעה', level:'medium', kind:'סיפור', icon:'💌', tint:'#ffe2ec', description:'לפעמים אי־הבנה קטנה הופכת לעניין גדול.', skill:'רגשות ונקודות מבט',
+    paragraphs:[
+      'לקראת יום הולדתה התשיעי הכינה שירה הזמנות צבעוניות לחברות ולחברים מהכיתה. על כל הזמנה ציירה בלון וסימנה כוכב קטן. ביום שני חילקה את ההזמנות בהפסקה, אבל כשהגיעה לנוגה כבר לא נותרה בתיקה אף הזמנה.',
+      '"כנראה הכנתי אחת פחות", לחשה שירה לעצמה. היא התכוונה לדבר עם נוגה בסוף היום, אך מיד אחרי הלימודים מיהרה לחוג השחייה ושכחה. למחרת שמעה נוגה את הילדים משוחחים על המסיבה. היא חשבה ששירה אינה רוצה להזמין אותה ונעשתה שקטה.',
+      'בזמן העבודה בזוגות הבחינה שירה שנוגה כמעט אינה מדברת איתה. "קרה משהו?" שאלה. נוגה היססה ואז סיפרה ששמעה על המסיבה ושלא קיבלה הזמנה. שירה הופתעה והסבירה מה קרה. "רציתי מאוד שתבואי", אמרה, "אבל לא מצאתי רגע לומר לך."',
+      'שירה כתבה מיד הזמנה חדשה על דף נקי והגישה אותה לנוגה. נוגה חייכה, אך הוסיפה: "בפעם הבאה כדאי פשוט לדבר. יום שלם חשבתי שעשיתי משהו לא בסדר." שירה הנהנה. היא הבינה ששתיקה יכולה לפעמים לגרום למישהו להבין דבר שלא התכוונו אליו.'
+    ],
+    questions:[
+      c('מדוע לא קיבלה נוגה הזמנה ביום שני?',['שירה לא רצתה להזמין אותה','שירה הכינה הזמנה אחת פחות','נוגה לא הגיעה לבית הספר','המסיבה בוטלה'],1,'איתור פרטים','שירה גילתה שלא נשארה לה הזמנה.'),
+      c('מה מנע משירה לדבר עם נוגה בסוף היום?',['היא מיהרה לחוג השחייה ושכחה','היא איבדה את הקול','היא לא הכירה את נוגה','היא נסעה לטיול'],0,'איתור פרטים','שירה מיהרה לחוג השחייה ושכחה לדבר איתה.'),
+      c('מדוע נעשתה נוגה שקטה?',['כאב לה הראש','היא הייתה עייפה בלבד','היא חשבה ששירה לא רוצה להזמין אותה','היא לא רצתה לעבוד בזוגות'],2,'הבנת רגשות','נוגה פירשה את היעדר ההזמנה כאילו שירה לא רוצה אותה במסיבה.'),
+      c('מה פירוש המילה "היססה" במשפט "נוגה היססה ואז סיפרה"?',['לא הייתה בטוחה אם לדבר','דיברה בקול חזק','רצה במהירות','צחקה מאוד'],0,'אוצר מילים','"היססה" משמעה התלבטה או התעכבה לפני פעולה.'),
+      c('מהי המסקנה העיקרית של שירה?',['תמיד צריך להכין בלונים','עדיף לא להזמין חברות','לפעמים שתיקה גורמת לאי־הבנות','אסור ללכת לחוג שחייה'],2,'הבנת מסר','שירה למדה שחשוב להבהיר דברים ולא להשאיר אחרים בחוסר ודאות.'),
+      o('מה קרה קודם ומה אחר כך?',['נוגה סיפרה למה היא פגועה','שירה חילקה הזמנות בהפסקה','שירה כתבה הזמנה חדשה'],[1,0,2],'קודם חולקו ההזמנות, אחר כך נוגה שיתפה ברגשותיה, ולבסוף שירה תיקנה את הטעות.'),
+      t('אילו מחשבות לדעתך עברו בראשה של נוגה כששמעה על המסיבה? היעזרי בסיפור.','נוגה אולי חשבה ששירה כועסת עליה או לא רוצה בחברתה, כי כל האחרים קיבלו הזמנה ורק היא לא.','הסקה'),
+      t('מה היית מציעה לשירה לעשות כדי למנוע את אי־ההבנה?','כדאי היה לשירה לומר לנוגה מיד שההזמנות נגמרו ולהבטיח להביא לה אחת חדשה למחרת.','הבעה ונימוק')
+    ]
+  },
+  {
+    id:'bench-box', title:'הקופסה על הספסל', level:'medium', kind:'סיפור', icon:'📦', tint:'#e8e4fb', description:'החלטה קטנה שעזרה למישהו אחר.', skill:'מניעים ורצף',
+    paragraphs:[
+      'בהפסקת האוכל מצא איתן קופסת קרטון קטנה על הספסל ליד הגינה. הקופסה הייתה סגורה בסרט ירוק, ועליה נכתב בטוש: "לפרויקט של יום חמישי". איתן הסתכל סביבו, אבל איש לא עמד ליד הספסל.',
+      'חברו רם התקרב בסקרנות. "אולי יש בפנים משהו מעניין", אמר והציע לפתוח את הקופסה. איתן חשב לרגע. "אם זו קופסה של מישהו אחר, עדיף שלא נפתח אותה", השיב. הם החליטו לקחת אותה למזכירות ולספר היכן מצאו אותה.',
+      'המזכירה הודתה לילדים והניחה את הקופסה במקום בטוח. היא הודיעה למורות שנמצאה קופסה עם סרט ירוק. אחר הצהריים הגיעה תלמידה מכיתה ד׳ ושאלה אם מישהו מצא את חומרי הפרויקט שלה. היא הסבירה שבתוך הקופסה נמצאים דגמי פרפרים שהכינה יחד עם אחותה.',
+      'למחרת סיפרה המחנכת לכיתה על המקרה בלי להזכיר את שם התלמידה. "לפעמים הדבר הנכון הוא דווקא לא לגעת במה ששייך לאחרים", אמרה. איתן ורם החליפו מבט וחייכו. הם שמחו לדעת שהקופסה חזרה לבעליה ושעזרו בלי לפתוח אותה כלל.'
+    ],
+    questions:[
+      c('היכן נמצאה הקופסה?',['בכיתה ד׳','על ספסל ליד הגינה','בתוך ספר','במסדרון ליד השירותים'],1,'איתור פרטים','איתן מצא אותה על ספסל ליד הגינה.'),
+      c('מה היה כתוב על הקופסה?',['"זהירות שביר"','"מתנה לאמא"','"לפרויקט של יום חמישי"','"נא להחזיר לספרייה"'],2,'איתור פרטים','על הקופסה נכתב "לפרויקט של יום חמישי".'),
+      c('למה איתן לא רצה לפתוח את הקופסה?',['כי לא ידע איך','כי פחד מסרט ירוק','כי הבין שהיא כנראה שייכת למישהו אחר','כי מיהר לאוטובוס'],2,'הסקת מניעים','איתן הבין שיש לכבד רכוש של אדם אחר.'),
+      c('כיצד ניסו הילדים למצוא את בעל הקופסה?',['לקחו אותה הביתה','מסרו אותה למזכירות','החביאו אותה בשיחים','השאירו אותה פתוחה'],1,'איתור פרטים','הם בחרו למסור את הקופסה למזכירות.'),
+      c('מה פירוש המילה "סקרנות" בסיפור?',['רצון לדעת ולגלות','כעס גדול','עייפות רבה','פחד מרעשים'],0,'אוצר מילים','סקרנות היא רצון לדעת או לגלות משהו.'),
+      o('סדרי את האירועים.',['המזכירה הודיעה למורות','איתן מצא קופסה על הספסל','התלמידה מכיתה ד׳ ביקשה את הקופסה'],[1,0,2],'איתן מצא, המזכירה פרסמה, והתלמידה באה לקחת.'),
+      t('מדוע לדעתך המחנכת סיפרה את המקרה לכיתה?','היא רצתה ללמד שכדאי לכבד רכוש של אחרים ולעזור למצוא בעלים של חפץ אבוד.','הבנת מסר'),
+      t('מה היית עושה אם היית מוצאת חפץ שאינו שלך? נמקי.','הייתי מוסרת אותו למורה או למזכירות כדי שיוכלו למצוא את בעליו, ולא פותחת או לוקחת לעצמי.','הבעת דעה')
+    ]
+  },
+  {
+    id:'bees', title:'למה הדבורים חשובות?', level:'medium', kind:'טקסט מידע', icon:'🐝', tint:'#fff0ae', description:'יצורים קטנים שעושים עבודה גדולה בטבע.', skill:'טקסט מידעי והסבר',
+    paragraphs:[
+      'כשאנחנו רואים דבורה עוברת מפרח לפרח, נדמה לפעמים שהיא רק מחפשת משהו מתוק. למעשה, בזמן שהדבורה אוספת צוף ואבקה, היא גם עוזרת לצמחים רבים להתרבות.',
+      'בפרחים יש גרגירים זעירים שנקראים אבקה. חלק מן הגרגירים נדבקים לגופה של הדבורה כשהיא נוחתת על פרח. כאשר היא עפה לפרח אחר מאותו הסוג, חלק מהאבקה יכול לעבור אליו. התהליך הזה נקרא "האבקה", והוא מאפשר לצמחים רבים ליצור זרעים ופירות.',
+      'לא כל הדבורים חיות בכוורות גדולות, ולא כולן מייצרות דבש שאנחנו אוכלים. יש גם דבורי בר שחיות בדרכים אחרות. כולן חלק חשוב מעולם הטבע. עם זאת, דבורים אינן המאביקות היחידות: גם פרפרים, בעלי חיים אחרים ואפילו הרוח יכולים להעביר אבקה.',
+      'מה אפשר לעשות כדי לעזור לדבורים? אפשר לשתול צמחים פורחים שמתאימים לאזור ולשמור על מקומות שבהם הן מוצאות מזון. חשוב גם לא להפריע לדבורה שמתעופפת ליד פרח. כדאי להתבונן בה בשקט וממרחק ולא לנסות לתפוס אותה.',
+      'בפעם הבאה שתראו דבורה בגינה, זכרו: היא לא רק מבקרת בפרחים. היא גם עוזרת לחלק מהם להמשיך ולצמוח.'
+    ],
+    questions:[
+      c('מה הדבורה אוספת מן הפרחים לפי הטקסט?',['אבנים קטנות','צוף ואבקה','טיפות גשם','עלים יבשים'],1,'איתור פרטים','הדבורה אוספת צוף ואבקה.'),
+      c('מהו תהליך ההאבקה המתואר בטקסט?',['העברת אבקה בין פרחים מתאימים','השקיית פרח בכל בוקר','צביעת הכוורת','הפיכת מים לקרח'],0,'הבנת מושג','העברת אבקה מאפשרת לצמחים רבים ליצור זרעים ופירות.'),
+      c('האם כל הדבורים חיות בכוורות גדולות?',['כן, תמיד','רק בחורף','לא, יש גם דבורי בר שחיות אחרת','רק ליד בתי ספר'],2,'איתור פרטים','הטקסט מדגיש שלא כל הדבורים חיות בכוורות.'),
+      c('מי עוד יכול להעביר אבקה?',['רק דבורים','פרפרים וגם הרוח','רק נמלים','רק בני אדם'],1,'איתור פרטים','מוזכרים פרפרים, בעלי חיים אחרים והרוח.'),
+      c('מה כדאי לעשות כשרואים דבורה ליד פרח?',['לנסות לתפוס אותה','לנופף לעברה בחוזקה','להתבונן בה בשקט וממרחק','להרחיק את כל הפרחים'],2,'יישום מידע','ההמלצה היא להתבונן ולא להפריע לה.'),
+      o('סדרי את שלבי ההאבקה כפי שמתואר בטקסט.',['אבקה עוברת לפרח אחר מאותו סוג','דבורה נוחתת על פרח','גרגירי אבקה נדבקים לדבורה'],[1,2,0],'הדבורה נוחתת, אבקה נדבקת לגופה ואז חלקה עובר לפרח אחר.'),
+      t('למה אפשר לומר שהדבורה והפרח עוזרים זה לזה?','הדבורה מקבלת מזון מהפרח, וכשהיא מעבירה אבקה היא עוזרת לפרחים רבים ליצור זרעים ופירות.','הסקה'),
+      t('הציעי דרך אחת לשמור על דבורים והסבירי מדוע היא יכולה לעזור.','אפשר לשתול צמחים פורחים מתאימים כדי שלדבורים יהיו מקומות למצוא בהם צוף ואבקה.','הבעה ויישום')
+    ]
+  },
+  {
+    id:'long-run', title:'המרוץ בשביל הארוך', level:'hard', kind:'סיפור', icon:'🏃‍♀️', tint:'#fee5d7', description:'לפעמים ההחלטה החשובה ביותר אינה מי ניצח.', skill:'מסר, רגשות והסקה',
+    paragraphs:[
+      'פעם בשנה ערך בית הספר מרוץ קבוצתי בפארק. כל קבוצה הייתה צריכה לעבור שלוש תחנות ולחזור לקו הסיום. תלמידי כיתה ג׳ חיכו ליום הזה במשך שבועות. ליאור התאמן כמעט בכל הפסקה והיה בטוח שהקבוצה שלו תגיע ראשונה.',
+      'ביום המרוץ יצאה הקבוצה לדרך במהירות. ליאור רץ בראש, ואחריו היו עמית, רז ונעמה. הם הגיעו לתחנה הראשונה ופתרו חידה במהירות. גם בתחנה השנייה הצליחו יפה. בדרך לתחנה השלישית מעדה נעמה ונפלה על השביל. היא קמה, אבל כאב לה בקרסול והיא התקשתה ללכת.',
+      '"אם נעצור, נפסיד", אמר רז בדאגה. ליאור הביט בקו הסיום שנראה מרחוק, ואז בנעמה שנשענה על עץ. לרגע חשב להמשיך, אבל הבין שלא נכון להשאיר אותה מאחור. הוא ביקש מעמית להזעיק את המורה שעמדה בתחנה הסמוכה, ונשאר עם נעמה. המורה הגיעה במהירות ועזרה לה.',
+      'הקבוצה סיימה את המרוץ אחרונה. ליאור הרגיש אכזבה קטנה, אך שמח שנעמה קיבלה עזרה. בטקס הסיום אמרה המנהלת: "היום ראינו שלא כל הצלחה נמדדת במהירות." היא העניקה לקבוצה תעודת חברות על האחריות שגילתה. נעמה לחשה לליאור: "בשבילי הייתם ראשונים."',
+      'בדרך הביתה הבין ליאור שהמרוץ לימד אותו דבר שלא התכוון ללמוד: לפעמים כדאי לשנות את המטרה כדי לעשות את הדבר הנכון.'
+    ],
+    questions:[
+      c('כמה תחנות היו במרוץ?',['שתיים','שלוש','ארבע','חמש'],1,'איתור פרטים','הקבוצות התבקשו לעבור שלוש תחנות.'),
+      c('מה קרה לנעמה בדרך לתחנה השלישית?',['היא שכחה את המפה','היא מעדה ונפגעה בקרסול','היא מצאה קיצור דרך','היא פתרה חידה'],1,'איתור פרטים','נעמה נפלה והתקשתה ללכת בגלל כאב בקרסול.'),
+      c('איזה קושי עמד בפני ליאור?',['לבחור חידה קשה','להחליט בין הניצחון לבין העזרה לנעמה','למצוא את הנעל שלו','לבחור צבע לתעודה'],1,'זיהוי התלבטות','ליאור רצה לנצח, אבל גם הבין שחברתו זקוקה לעזרה.'),
+      c('מדוע אמרה נעמה "בשבילי הייתם ראשונים"?',['כי הם באמת הגיעו ראשונים','כי התעודה הייתה מזהב','כי הרגישה שעזרתם חשובה מן המקום במרוץ','כי לא ראתה את קו הסיום'],2,'הסקה','נעמה הודתה להם על כך שלא השאירו אותה לבדה.'),
+      c('לאיזה רעיון מתאים המשפט "לא כל הצלחה נמדדת במהירות"?',['רק ניצחון חשוב','חברות ואחריות הן גם הצלחה','עדיף לא להשתתף בתחרויות','אסור לרוץ בפארק'],1,'הבנת מסר','ההצלחה כאן קשורה גם לאחריות ולחברות.'),
+      o('סדרי את האירועים.',['הקבוצה קיבלה תעודת חברות','נעמה מעדה בדרך','הקבוצה פתרה את החידה בתחנה הראשונה'],[2,1,0],'החידה הייתה בתחילת המרוץ, הפציעה בהמשך, והטקס בסוף.'),
+      t('איך השתנו הרגשות של ליאור לאורך הסיפור? צייני לפחות שני שלבים.','בהתחלה ליאור היה בטוח ונלהב לנצח. אחר כך התלבט ודאג לנעמה. בסיום התאכזב מעט מהמקום האחרון, אבל שמח שעזר לה.','הבנת דמות'),
+      t('האם לדעתך הקבוצה הצליחה במרוץ? נמקי בעזרת שני פרטים מהטקסט.','לדעתי כן: היא פתרה חידות בדרך, ובעיקר עצרה לעזור לנעמה וקיבלה תעודת חברות, אף שסיימה אחרונה.','הבעת דעה מנומקת')
+    ]
+  },
+  {
+    id:'book-fair-rain', title:'היריד שכמעט התבטל', level:'hard', kind:'סיפור', icon:'🎪', tint:'#eddff9', description:'איך כמה רעיונות פשוטים שינו יום שלם.', skill:'בעיה, פתרון ומסקנה',
+    paragraphs:[
+      'כיתה ג׳ תכננה יריד ספרים גדול בחצר בית הספר. במשך שבועיים אספו התלמידים ספרים משומשים במצב טוב, הכינו שלטים וארגנו שולחנות. הכסף שיתקבל מהמכירה היה מיועד לקניית משחקי קופסה לספרייה.',
+      'ביום חמישי בבוקר התעוררו הילדים לקול רעמים. גשם חזק ירד, והחצר התמלאה שלוליות. המורה אמרה שלא יהיה אפשר לקיים את היריד בחוץ. כמה תלמידים הציעו לדחות אותו, אך אחרים התאכזבו: הורים רבים כבר פינו זמן כדי להגיע.',
+      'הספרנית הציעה להשתמש במסדרון הרחב שליד הספרייה. שם היה מקום רק למחצית השולחנות. נטע הציעה לסדר את הספרים לפי נושאים על מדפים במקום לפרוש את כולם על שולחנות. יונתן הוסיף רעיון: לסמן בחצים על הרצפה מסלול שבו המבקרים ינועו בכיוון אחד כדי שלא ייווצר עומס.',
+      'הילדים חילקו ביניהם תפקידים ופעלו במהירות. קבוצה אחת העבירה ספרים, קבוצה שנייה תלתה שלטים, והשלישית בדקה שהמעבר נשאר פנוי. כשהיריד נפתח אחר הצהריים, המבקרים הסתקרנו מהסידור החדש. כמה הורים אמרו שקל מאוד למצוא כך ספרים.',
+      'בסיום התברר שנמכרו ספרים רבים, והכיתה הצליחה לקנות משחקים חדשים לספרייה. על לוח הכיתה כתבו התלמידים: "בעיה שלא בחרנו יכולה להפוך להזדמנות לרעיון שלא הכרנו."'
+    ],
+    questions:[
+      c('למה רצו הילדים לגייס כסף ביריד?',['לקנות כרטיסים לקולנוע','לקנות משחקי קופסה לספרייה','לצאת לטיול','לצבוע את בית הספר'],1,'איתור פרטים','ההכנסות היו מיועדות למשחקים לספרייה.'),
+      c('למה אי אפשר היה לקיים את היריד בחצר?',['כי לא נשארו ספרים','כי ירד גשם חזק והיו שלוליות','כי כולם שכחו את התאריך','כי החצר הייתה קטנה מדי תמיד'],1,'סיבה ותוצאה','מזג האוויר מנע שימוש בחצר.'),
+      c('מה הייתה הבעיה במסדרון?',['הוא היה חשוך לגמרי','לא היה בו מקום לכל השולחנות','לא היו בו דלתות','היה בו רעש של מכוניות'],1,'איתור פרטים','במסדרון היה מקום רק למחצית השולחנות.'),
+      c('כיצד עזרה ההצעה של יונתן?',['אפשרה להכין אוכל','עזרה למנוע עומס במעבר','הגדילה את מספר הספרים','ביטלה את הצורך בשלטים'],1,'הסקה','החצים כיוונו תנועה בכיוון אחד כדי למנוע צפיפות.'),
+      c('מהו המסר המרכזי של הסיפור?',['כאשר מתעוררת בעיה, אפשר למצוא פתרון יצירתי יחד','לעולם אין לערוך ירידים','ספרים ישנים אינם שימושיים','כל פעילות חייבת להיות בחוץ'],0,'רעיון מרכזי','הילדים פתרו יחד בעיה לא צפויה והצליחו.'),
+      o('סדרי את השלבים בהכנת היריד.',['קיימו את היריד במסדרון','הכינו יריד בחצר','שינו את התוכנית בגלל הגשם'],[1,2,0],'תחילה תוכנן יריד בחצר, הגשם הביא לשינוי, ולבסוף היריד נערך במסדרון.'),
+      t('איזה יתרון לא צפוי היה לסידור הספרים החדש? הוכיחי מהטקסט.','היה קל יותר למצוא ספרים לפי נושאים, וכמה הורים אמרו זאת כשביקרו ביריד.','הסקה והוכחה'),
+      t('בחרי אחד מהרעיונות של הילדים והסבירי כיצד הוא תרם להצלחת היריד.','נטע הציעה לסדר ספרים לפי נושאים על מדפים. כך חסכו במקום וגם הקלו על המבקרים למצוא ספרים.','כתיבה מנומקת')
+    ]
+  },
+  {
+    id:'water-journey', title:'המסע של טיפת המים', level:'hard', kind:'טקסט מידע', icon:'💧', tint:'#dceefe', description:'לאן הולכים המים אחרי שהשלולית מתייבשת?', skill:'טקסט מדעי ורצף תהליכים',
+    paragraphs:[
+      'אחרי הגשם אפשר לראות שלוליות על המדרכה. ביום שמש הן לפעמים נעלמות. האם המים פשוט חדלו להתקיים? לא. הם ממשיכים לנוע בטבע בדרכים שונות כחלק מתהליך שנקרא "מחזור המים".',
+      'כאשר השמש מחממת מים בים, באגם או בשלולית, חלק מהם הופך לאדי מים ועולה לאוויר. התהליך הזה נקרא התאדות. אדי המים הם גז שאי אפשר לראות בעין, אף שהמים עצמם עדיין קיימים.',
+      'גבוה באוויר, כשהאוויר מתקרר בתנאים מתאימים, חלק מאדי המים הופך לטיפות מים זעירות או לגבישי קרח. התהליך הזה נקרא התעבות. טיפות וגבישים רבים יחד יכולים ליצור עננים. כשחלקיקי המים בענן גדלים וכבדים מספיק, הם יכולים לרדת אל הקרקע כגשם או כמשקעים אחרים.',
+      'מי הגשם אינם מגיעים כולם לאותו מקום. חלקם זורמים לנחלים, חלקם מחלחלים לתוך הקרקע, וחלקם מגיעים לבסוף לים. גם צמחים פולטים אדי מים לאוויר. כך מים עוברים שוב ושוב בין הקרקע, מקווי המים והאוויר.',
+      'כדאי לזכור שלא כל שלולית מתייבשת באותו קצב. קצב ההתאדות מושפע בין השאר מחום, מרוח ומלחות האוויר. לכן שלולית ביום חם ורוחני עשויה להצטמצם מהר יותר משלולית ביום קר ולח.'
+    ],
+    questions:[
+      c('איך נקרא התהליך שבו מים נוזליים הופכים לאדי מים?',['התעבות','התאדות','חלחול','קיפאון'],1,'הבנת מושג','התאדות היא מעבר ממים נוזליים לאדי מים.'),
+      c('מה קורה בתהליך ההתעבות?',['אדי מים יכולים להפוך לטיפות זעירות','כל המים נעלמים','נוצרות אבנים','הגשם הופך לשמש'],0,'הבנת מושג','אדי מים שמתקררים יכולים להפוך לטיפות מים או לגבישי קרח.'),
+      c('מה עשוי לקרות למי הגשם המגיעים לקרקע?',['כולם נשארים בשלולית','כולם מגיעים מיד לשמיים','חלקם מחלחלים לקרקע וחלקם זורמים לנחלים','הם מפסיקים להיות מים'],2,'איתור פרטים','הטקסט מתאר דרכים שונות של מי הגשם.'),
+      c('לפי הטקסט, באילו תנאים שלולית עשויה להצטמצם מהר יותר?',['ביום חם ורוחני','ביום קר ולח','בלילה קר בלבד','כשהמים מכוסים בקרח'],0,'יישום והסקה','חום ורוח עשויים להגביר את קצב ההתאדות.'),
+      c('מהו הרעיון המרכזי של הטקסט?',['עננים עשויים רק משלג','מים נעים בטבע בתהליכים חוזרים','מותר לשתות ממי שלולית','גשם יורד רק בחורף'],1,'רעיון מרכזי','כל הפסקאות מסבירות את מחזור המים.'),
+      o('סדרי את השלבים המתוארים במחזור המים.',['מים יורדים כגשם','מים מתחממים ומתאדים','חלק מאדי המים מתעבה לטיפות בעננים'],[1,2,0],'התאדות → התעבות → משקעים. לאחר מכן המים ממשיכים במחזור.'),
+      t('ילדה אמרה: "השלולית נעלמה, אז המים נעלמו מהעולם". האם היא צודקת? הסבירי.','לא. המים עשויים להתאדות ולהפוך לאדי מים שבאוויר. הם לא נעלמים מהעולם רק מפני שאיננו רואים אותם בשלולית.','הסקה מדעית'),
+      t('הסבירי במילים שלך את ההבדל בין התאדות להתעבות.','בהתאדות מים נוזליים הופכים לגז, ובתהליך ההתעבות אדי מים יכולים להפוך לטיפות נוזליות.','הסבר מושגים')
+    ]
+  }
+ ];
+ function c(prompt,options,correct,skill,explain){return {type:'choice',prompt,options,correct,skill,explain};}
+ function t(prompt,sample,skill){return {type:'text',prompt,sample,skill};}
+ function o(prompt,options,correct,explain){return {type:'order',prompt,options,correct,skill:'רצף אירועים',explain};}
+ const LEVELS={easy:'קל',medium:'בינוני',hard:'מאתגר'};
+ const STORAGE_KEY='gefen_reads_grade3_v1';
+ const $=id=>document.getElementById(id);
+ let persisted={completed:{},drafts:{},fontSize:21};
+ try {const s=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(s&&typeof s==='object'){persisted={...persisted,...s,completed:s.completed||{},drafts:s.drafts||{}};}}catch(e){}
+ let current=null,answers={},submitted=false,mode='practice',levelFilter='all',searchQuery='';
+ let timer=null;
+ function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(persisted));}catch(e){}}
+ function esc(str){return String(str).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));}
+ function toast(msg){const el=$('toast');el.textContent=msg;el.classList.remove('hide');clearTimeout(timer);timer=setTimeout(()=>el.classList.add('hide'),2900);}
+ function answered(q,i){const a=answers[i];return q.type==='choice'?Number.isInteger(a):q.type==='order'?Array.isArray(a)&&a.length===q.correct.length:typeof a==='string'&&a.trim().length>0;}
+ function correct(q,i){if(q.type==='choice')return answers[i]===q.correct;if(q.type==='order')return JSON.stringify(answers[i])===JSON.stringify(q.correct);return null;}
+ function answerCount(){return current.questions.filter((q,i)=>answered(q,i)).length;}
+ function saveDraft(){if(!current)return;persisted.drafts[current.id]={answers,mode};persist();}
+ function updateStats(){const done=Object.keys(persisted.completed).filter(id=>STORIES.some(s=>s.id===id)).length;$('countDone').textContent=done;$('countStories').textContent=STORIES.length;$('countQuestions').textContent=STORIES.reduce((n,s)=>n+s.questions.length,0);$('headProgress').innerHTML='⭐ <b>'+done+'</b> הושלמו';}
+ function renderCatalog(){
+  updateStats();const matches=STORIES.filter(s=>(levelFilter==='all'||s.level===levelFilter)&&(s.title+' '+s.description+' '+s.kind).includes(searchQuery));
+  $('cards').innerHTML=matches.length?matches.map(s=>{
+   const done=persisted.completed[s.id];
+   return `<article class="story-card"><div class="card-visual" style="background:${s.tint}"><span aria-hidden="true">${s.icon}</span></div><div class="card-body"><div class="meta"><span class="mini-tag">${LEVELS[s.level]}</span><span class="mini-tag">${s.kind}</span><span class="mini-tag ${done?'done':''}">${done?'✓ הושלם':s.questions.length+' שאלות'}</span></div><h3>${esc(s.title)}</h3><p>${esc(s.description)}</p><div class="card-foot"><button data-open="${s.id}" aria-label="פתיחת ${esc(s.title)}">${done?'לקרוא שוב':'מתחילים לקרוא'} ←</button><span class="skill">${esc(s.skill)}</span></div></div></article>`;
+  }).join(''):'<div class="empty">לא נמצאו סיפורים שמתאימים לחיפוש שלך. כדאי לנסות מילה אחרת 🌷</div>';
+  $('cards').querySelectorAll('[data-open]').forEach(btn=>btn.addEventListener('click',()=>navigateTo(btn.dataset.open)));
+ }
+ function navigateTo(id){if(!STORIES.some(s=>s.id===id))return; if(location.hash!==`#story=${id}`)location.hash='story='+id;else openStory(id);}
+ function openStory(id){const story=STORIES.find(s=>s.id===id);if(!story){showHome();return;}current=story;
+  const draft=persisted.drafts[id]||{};answers=draft.answers&&typeof draft.answers==='object'?JSON.parse(JSON.stringify(draft.answers)):{};mode=draft.mode==='exam'?'exam':'practice';submitted=!!persisted.completed[id];
+  $('home').classList.add('hide');$('study').classList.remove('hide');$('studyMeta').textContent=`${story.kind} · רמה ${LEVELS[story.level]} · ${story.questions.length} שאלות`;
+  $('storyTitle').textContent=story.title;$('studyDescription').textContent=story.description;
+  $('readingText').innerHTML=story.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('');
+  applyFont();renderMode();renderQuestions();updateSteps(false);
+  window.scrollTo({top:0,behavior:'instant'});
+ }
+ function showHome(){current=null;$('study').classList.add('hide');$('home').classList.remove('hide');renderCatalog();window.scrollTo({top:0,behavior:'instant'});}
+ function renderMode(){$('modeToggle').querySelectorAll('button').forEach(btn=>{btn.classList.toggle('active',btn.dataset.mode===mode);btn.disabled=submitted;});}
+ function renderQuestions(){if(!current)return;
+  $('questions').innerHTML=current.questions.map((q,i)=>{
+   const label=`<div class="qtop"><span class="qnum">${i+1}</span><span class="qskill">${esc(q.skill)}</span></div><div class="qtitle">${esc(q.prompt)}</div>`;
+   let input='';const showFeedback=submitted||mode==='practice';
+   if(q.type==='choice'){
+     input=`<div class="answers">${q.options.map((op,j)=>{const isSelected=answers[i]===j;const resultClass=showFeedback&&answered(q,i)? (j===q.correct?' correct':isSelected?' wrong':''):'';
+       return `<button type="button" class="answer ${isSelected?'selected':''}${resultClass}" data-q="${i}" data-choice="${j}" ${submitted?'disabled':''} aria-pressed="${isSelected}"><span class="letter">${['א','ב','ג','ד'][j]||j+1}</span><span>${esc(op)}</span></button>`;}).join('')}</div>`;
+   } else if(q.type==='order'){
+     const chosen=Array.isArray(answers[i])?answers[i]:[];
+     input=`<div class="sequence-hint">לחצי על המשפטים לפי הסדר שבו קרו האירועים, מהראשון לאחרון.</div><div class="sequence-list">${chosen.map((a,k)=>`<span class="sequence-item">${k+1}. ${esc(q.options[a]||'')}</span>`).join('')||'<span style="color:#9b95aa;font-size:13px">המשפטים שבחרת יופיעו כאן...</span>'}</div><div style="display:flex;gap:8px;flex-wrap:wrap">${q.options.map((op,j)=>`<button class="sequence-choice" data-q="${i}" data-order="${j}" ${(submitted||chosen.includes(j))?'disabled':''}>${esc(op)}</button>`).join('')}</div>${!submitted?`<button class="clear-order" data-reset="${i}" style="margin-top:12px">↺ להתחיל את הסדר מחדש</button>`:''}`;
+   } else {
+     input=`<textarea class="text-answer" data-text="${i}" aria-label="תשובה לשאלה ${i+1}" placeholder="כתבי כאן תשובה במשפטים שלך..." rows="3" ${submitted?'readonly':''}></textarea><div class="word-counter">בשאלה הזאת אין בדיקה אוטומטית. אחרי ההגשה תופיע תשובה לדוגמה.</div>`;
+   }
+   let fb='';if(q.type!=='text'&&showFeedback&&answered(q,i)){
+    const ok=correct(q,i);fb=`<div class="feedback ${ok?'good':'bad'}">${ok?'✓ כל הכבוד! ':'כדאי לבדוק שוב בסיפור. '}${submitted||ok?esc(q.explain):'חפשי רמז בטקסט ונסי שוב.'}</div>`;
+   } else if(submitted&&q.type!=='text'&&!answered(q,i)){
+    fb=`<div class="feedback neutral">לא נבחרה תשובה. ${esc(q.explain)}</div>`;
+   } else if(submitted&&q.type==='text'){
+    fb=`<div class="feedback neutral"><b>תשובה אפשרית:</b> ${esc(q.sample)}<div style="margin-top:8px;font-size:12px">זו דוגמה בלבד. גם תשובה אחרת שמבוססת על הטקסט ומנומקת יכולה להיות נכונה.</div></div>`;
+   }
+   return `<article class="qcard" id="q-${i}">${label}${input}${fb}</article>`;
+  }).join('');
+  $('questions').querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>{answers[Number(b.dataset.q)]=Number(b.dataset.choice);saveDraft();renderQuestions();}));
+  $('questions').querySelectorAll('[data-order]').forEach(b=>b.addEventListener('click',()=>{const i=Number(b.dataset.q),j=Number(b.dataset.order);const arr=Array.isArray(answers[i])?answers[i]:[];if(!arr.includes(j)){answers[i]=[...arr,j];saveDraft();renderQuestions();}}));
+  $('questions').querySelectorAll('[data-reset]').forEach(b=>b.addEventListener('click',()=>{answers[Number(b.dataset.reset)]=[];saveDraft();renderQuestions();}));
+  $('questions').querySelectorAll('[data-text]').forEach(area=>{const i=Number(area.dataset.text);area.value=typeof answers[i]==='string'?answers[i]:'';area.addEventListener('input',()=>{answers[i]=area.value;saveDraft();updateAnswerStatus();});});
+  updateAnswerStatus();
+  if(submitted){$('submitWrap').classList.add('hide');renderResults();}else{$('submitWrap').classList.remove('hide');$('results').classList.add('hide');}
+ }
+ function updateAnswerStatus(){if(!current)return;const count=answerCount();$('answersStatus').textContent=`${count} מתוך ${current.questions.length} נענו`;$('answerBar').style.width=(count/current.questions.length*100)+'%';}
+ function updateSteps(atQuestions){$('stepRead').classList.toggle('active',!atQuestions&&!submitted);$('stepAnswer').classList.toggle('active',atQuestions&&!submitted);$('stepReview').classList.toggle('active',submitted);}
+ function submitAnswers(){if(!current||submitted)return;const firstMissing=current.questions.findIndex((q,i)=>!answered(q,i));if(firstMissing!==-1){toast('נשארו שאלות ללא תשובה. בואי נשלים אותן קודם 🌷');$('q-'+firstMissing).scrollIntoView({behavior:'smooth',block:'center'});return;}
+  const closed=current.questions.map((q,i)=>({q,i})).filter(x=>x.q.type!=='text');const score=closed.filter(x=>correct(x.q,x.i)).length;
+  persisted.completed[current.id]={score,total:closed.length,at:new Date().toISOString()};submitted=true;saveDraft();persist();renderMode();renderQuestions();updateSteps(true);$('results').scrollIntoView({behavior:'smooth',block:'center'});
+ }
+ function renderResults(){const data=persisted.completed[current.id];if(!data)return;const percentage=data.total?Math.round(data.score/data.total*100):0;const message=percentage===100?'וואו! ענית נכון על כל השאלות הסגורות!':percentage>=67?'איזה יופי! את ממש מתקדמת.':'כל תרגול מחזק את הקריאה. כדאי לעבור על ההסברים ולנסות שוב.';
+  $('results').className='result-panel';$('results').innerHTML=`<div class="medal">${percentage===100?'🏆':percentage>=67?'🌟':'🌱'}</div><h2>${message}</h2><p><strong>${data.score} מתוך ${data.total}</strong> תשובות נכונות בשאלות הסגורות (${percentage}%).</p><div class="review-note">✏️ שתי שאלות הכתיבה אינן כלולות בציון. כדאי להשוות את התשובות לתשובות לדוגמה, ולבקש ממבוגר לעבור עליהן איתך.</div><div class="result-actions"><button class="primary" id="anotherStory">לבחור סיפור נוסף ←</button><button class="secondary" id="retryStory">לנסות את הסיפור שוב</button></div>`;
+  $('anotherStory').addEventListener('click',()=>{location.hash='';showHome();setTimeout(()=>$('library').scrollIntoView({behavior:'smooth',block:'start'}),50);});
+  $('retryStory').addEventListener('click',()=>{delete persisted.completed[current.id];delete persisted.drafts[current.id];persist();answers={};submitted=false;renderMode();renderQuestions();updateSteps(false);$('questionsSection').scrollIntoView({behavior:'smooth',block:'start'});toast('התחלנו מחדש. בהצלחה! 💜');});
+ }
+ function applyFont(){const size=Math.max(17,Math.min(29,Number(persisted.fontSize)||21));persisted.fontSize=size;$('readingText').style.setProperty('--read-size',size+'px');}
+ function onHash(){const match=(location.hash||'').match(/^#story=([a-z0-9-]+)$/);if(match&&STORIES.some(s=>s.id===match[1]))openStory(match[1]);else showHome();}
+ $('search').addEventListener('input',e=>{searchQuery=e.target.value.trim();renderCatalog();});
+ $('filters').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{levelFilter=b.dataset.level;$('filters').querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));renderCatalog();}));
+ $('startFirst').addEventListener('click',()=>{const next=STORIES.find(s=>!persisted.completed[s.id])||STORIES[0];navigateTo(next.id);});
+ $('backHome').addEventListener('click',()=>{location.hash='';showHome();});
+ $('toQuestions').addEventListener('click',()=>{updateSteps(true);$('questionsSection').scrollIntoView({behavior:'smooth',block:'start'});});
+ $('bigger').addEventListener('click',()=>{persisted.fontSize=Math.min(29,persisted.fontSize+2);applyFont();persist();});
+ $('smaller').addEventListener('click',()=>{persisted.fontSize=Math.max(17,persisted.fontSize-2);applyFont();persist();});
+ $('print').addEventListener('click',()=>window.print());
+ $('submitAnswers').addEventListener('click',submitAnswers);
+ $('modeToggle').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(submitted)return;mode=b.dataset.mode;saveDraft();renderMode();renderQuestions();toast(mode==='exam'?'מצב מבחן: התשובות נבדקות רק בסיום.':'מצב תרגול: מקבלים משוב תוך כדי.');}));
+ window.addEventListener('hashchange',onHash);
+ updateStats();onHash();
+ </script>
+</body>
+</html>
