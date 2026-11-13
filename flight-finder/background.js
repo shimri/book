@@ -1,6 +1,7 @@
 importScripts("extract.js", "highlight.js");
 
 const ymd = (d) => d.slice(2).replace(/-/g, "");
+const mdy = (d) => `${d.slice(5, 7)}/${d.slice(8, 10)}/${d.slice(0, 4)}`;
 const SITES = [
   { id: "google", name: "Google Flights", url: (p) =>
     `https://www.google.com/travel/flights?q=${encodeURIComponent(`Flights from ${p.from} to ${p.to} on ${p.dep}${p.ret ? " through " + p.ret : ""}`)}&curr=${p.cur}&hl=en` },
@@ -8,6 +9,12 @@ const SITES = [
     `https://www.skyscanner.co.il/transport/flights/${p.from}/${p.to}/${ymd(p.dep)}/${p.ret ? ymd(p.ret) + "/" : ""}?adultsv2=${p.adults}&currency=${p.cur}` },
   { id: "kayak", name: "Kayak", url: (p) =>
     `https://www.kayak.com/flights/${p.from}-${p.to}/${p.dep}${p.ret ? "/" + p.ret : ""}/${p.adults}adults?currency=${p.cur}` },
+  { id: "expedia", name: "Expedia", url: (p) =>
+    `https://www.expedia.com/Flights-Search?mode=search&trip=${p.ret ? "roundtrip" : "oneway"}&leg1=from:${p.from},to:${p.to},departure:${mdy(p.dep)}TANYT${p.ret ? `&leg2=from:${p.to},to:${p.from},departure:${mdy(p.ret)}TANYT` : ""}&passengers=adults:${p.adults}&options=cabinclass:economy` },
+  { id: "booking", name: "Booking.com", url: (p) =>
+    `https://flights.booking.com/flights/${p.from}.AIRPORT-${p.to}.AIRPORT/?type=${p.ret ? "ROUNDTRIP" : "ONEWAY"}&adults=${p.adults}&cabinClass=ECONOMY&from=${p.from}.AIRPORT&to=${p.to}.AIRPORT&depart=${p.dep}${p.ret ? "&return=" + p.ret : ""}&sort=BEST&currency=${p.cur}` },
+  { id: "trip", name: "Trip.com", url: (p) =>
+    `https://www.trip.com/flights/showfarefirst?dcity=${p.from.toLowerCase()}&acity=${p.to.toLowerCase()}&ddate=${p.dep}${p.ret ? "&rdate=" + p.ret : ""}&triptype=${p.ret ? "rt" : "ow"}&class=y&quantity=${p.adults}&curr=${p.cur}` },
   { id: "momondo", name: "Momondo", url: (p) =>
     `https://www.momondo.com/flight-search/${p.from}-${p.to}/${p.dep}${p.ret ? "/" + p.ret : ""}/${p.adults}adults?currency=${p.cur}` },
 ];
@@ -74,5 +81,11 @@ chrome.runtime.onMessage.addListener((msg) => {
   const myRun = ++runId;
   results = {};
   chrome.storage.session.set({ results, params: msg.params });
-  SITES.forEach((s) => scrapeSite(s, msg.params, myRun));
+  // Only the sources the user enabled, at most 4 tabs at a time.
+  const list = SITES.filter((s) => !msg.params.sites || msg.params.sites.includes(s.id));
+  list.forEach((s) => { results[s.id] = { name: s.name, url: s.url(msg.params), status: "loading", price: null }; });
+  chrome.storage.session.set({ results });
+  const queue = [...list];
+  const worker = async () => { while (queue.length && myRun === runId) await scrapeSite(queue.shift(), msg.params, myRun); };
+  Array.from({ length: Math.min(4, queue.length) }, worker);
 });

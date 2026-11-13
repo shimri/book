@@ -36,6 +36,11 @@
   .bags { display:flex; gap:8px; margin-top:10px; }
   .chip { flex:1; display:flex; align-items:center; justify-content:center; gap:7px; padding:9px 6px; border:1px solid var(--line); border-radius:10px; background:var(--card); font-size:13px; cursor:pointer; color:var(--muted); user-select:none; }
   .chip.on { border-color:var(--brand); background:color-mix(in srgb,var(--brand) 12%,var(--card)); color:var(--brand); font-weight:600; }
+  .srcl { margin-top:12px; }
+  .sites { display:flex; flex-wrap:wrap; gap:6px; }
+  .sc { display:flex; align-items:center; gap:6px; padding:4px 9px 4px 4px; padding-inline:4px 9px; border:1px solid var(--line); border-radius:99px; font-size:12px; cursor:pointer; color:var(--muted); background:var(--card); user-select:none; opacity:.7; }
+  .sc.on { opacity:1; color:var(--text); border-color:var(--brand); background:color-mix(in srgb,var(--brand) 10%,var(--card)); font-weight:600; }
+  .sc .dot { width:18px; height:18px; border-radius:50%; background:var(--c); color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center; }
   .actions { display:flex; gap:8px; margin-top:12px; }
   #go { flex:1; padding:11px; font-size:15px; font-weight:600; background:linear-gradient(135deg,#2f7dff,#0f56c4); color:#fff; border:0; border-radius:11px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 2px 8px rgba(26,111,240,.35); font-family:inherit; }
   #go:hover { filter:brightness(1.07); } #go:disabled { filter:grayscale(.6); cursor:wait; box-shadow:none; }
@@ -91,6 +96,8 @@
       <div class="chip" id="bagCarry"><i class="fa-solid fa-suitcase-rolling"></i> <span data-i18n="carryOn"></span></div>
       <div class="chip" id="bagChecked"><i class="fa-solid fa-suitcase"></i> <span data-i18n="checkedBag"></span></div>
     </div>
+    <label class="l srcl" data-i18n="sources"></label>
+    <div class="sites" id="sites"></div>
     <div class="actions">
       <button id="go"><i class="fa-solid fa-magnifying-glass"></i> <span data-i18n="searchOthers"></span></button>
       <button id="reset" data-i18n-title="resetSearch"><i class="fa-solid fa-rotate-left"></i></button>

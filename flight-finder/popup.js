@@ -7,7 +7,13 @@ document.documentElement.dir = chrome.i18n.getMessage("@@bidi_dir") || "ltr";
 document.querySelectorAll("[data-i18n]").forEach((e) => (e.textContent = t(e.dataset.i18n)));
 document.querySelectorAll("[data-i18n-title]").forEach((e) => (e.title = t(e.dataset.i18nTitle)));
 let curPrice = null, curCur = null;
-const state = { trip: "round", adults: 1, carry: false, checked: false };
+const SITE_UI = {
+  google: { n: "Google Flights", c: "#4285f4", l: "G" }, skyscanner: { n: "Skyscanner", c: "#0770e3", l: "S" },
+  kayak: { n: "Kayak", c: "#ff690f", l: "K" }, momondo: { n: "Momondo", c: "#e6007e", l: "M" },
+  expedia: { n: "Expedia", c: "#00355f", l: "E" }, booking: { n: "Booking.com", c: "#003b95", l: "B" },
+  trip: { n: "Trip.com", c: "#287dfa", l: "T" },
+};
+const state = { trip: "round", adults: 1, carry: false, checked: false, sites: Object.keys(SITE_UI) };
 const saveUI = () => chrome.storage.local.set({ ui: state });
 function paintUI() {
   document.querySelectorAll("#trip button").forEach((b) => b.classList.toggle("on", b.dataset.t === state.trip));
@@ -15,6 +21,17 @@ function paintUI() {
   $("adults").textContent = state.adults;
   $("bagCarry").classList.toggle("on", state.carry);
   $("bagChecked").classList.toggle("on", state.checked);
+  $("sites").innerHTML = "";
+  Object.entries(SITE_UI).forEach(([id, s]) => {
+    const c = document.createElement("div");
+    c.className = "sc" + (state.sites.includes(id) ? " on" : "");
+    c.innerHTML = `<span class="dot" style="--c:${s.c}">${s.l}</span>${s.n}`;
+    c.addEventListener("click", () => {
+      state.sites = state.sites.includes(id) ? state.sites.filter((x) => x !== id) : [...state.sites, id];
+      paintUI(); saveUI();
+    });
+    $("sites").appendChild(c);
+  });
 }
 document.querySelectorAll("#trip button").forEach((b) => b.addEventListener("click", () => { state.trip = b.dataset.t; paintUI(); saveUI(); }));
 $("minus").addEventListener("click", () => { state.adults = Math.max(1, state.adults - 1); paintUI(); saveUI(); });
@@ -35,6 +52,7 @@ async function init() {
   const saved = await chrome.storage.local.get(["from", "ui"]);
   $("from").value = saved.from || "TLV";
   Object.assign(state, saved.ui || {});
+  if (!Array.isArray(state.sites)) state.sites = Object.keys(SITE_UI);
   paintUI();
   try {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -62,10 +80,6 @@ async function init() {
   chrome.storage.session.get("results").then((s) => render(s.results));
 }
 
-const SITE_UI = {
-  google: { c: "#4285f4", l: "G" }, skyscanner: { c: "#0770e3", l: "S" },
-  kayak: { c: "#ff690f", l: "K" }, momondo: { c: "#e6007e", l: "M" },
-};
 
 function render(results) {
   const entries = Object.entries(results || {});
@@ -137,12 +151,13 @@ $("go").addEventListener("click", async () => {
   const v = {
     from: $("from").value.trim().toUpperCase(), to: $("to").value.trim().toUpperCase(),
     dep: $("dep").value, ret: state.trip === "one" ? "" : $("ret").value,
-    adults: state.adults, cur: curCur || "ILS", carry: state.carry, checked: state.checked,
+    adults: state.adults, cur: curCur || "ILS", carry: state.carry, checked: state.checked, sites: state.sites,
   };
   if (!/^[A-Z]{3}$/.test(v.from) || !/^[A-Z]{3}$/.test(v.to) || !v.dep) {
     $("status").textContent = t("statusMissing");
     return;
   }
+  if (!state.sites.length) { $("status").textContent = t("noSources"); return; }
   await chrome.storage.local.set({ from: v.from });
   $("status").textContent = t("statusRunning");
   chrome.runtime.sendMessage({ type: "compare", params: v });
@@ -156,7 +171,7 @@ $("reset").addEventListener("click", () => {
   $("go").disabled = false;
   $("go").querySelector("span").textContent = t("searchOthers");
   $("cur").hidden = true;
-  Object.assign(state, { trip: "round", adults: 1, carry: false, checked: false });
+  Object.assign(state, { trip: "round", adults: 1, carry: false, checked: false, sites: Object.keys(SITE_UI) });
   paintUI(); saveUI();
   $("status").textContent = t("statusReset");
   init();

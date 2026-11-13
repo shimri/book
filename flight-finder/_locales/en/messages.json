@@ -151,5 +151,11 @@
  },
  "notOnPage": {
   "message": "Couldn't find this price on the page."
+ },
+ "sources": {
+  "message": "Sources"
+ },
+ "noSources": {
+  "message": "Select at least one source."
  }
 }
