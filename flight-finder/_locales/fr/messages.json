@@ -157,5 +157,20 @@
  },
  "noSources": {
   "message": "Sélectionnez au moins une source."
+ },
+ "bagIncl": {
+  "message": "Inclus"
+ },
+ "bagNot": {
+  "message": "Non inclus"
+ },
+ "bagUnk": {
+  "message": "Inconnu"
+ },
+ "warnChecked": {
+  "message": "Pas de bagage en soute à ce prix"
+ },
+ "warnCarry": {
+  "message": "Pas de bagage cabine à ce prix"
  }
 }

@@ -68,7 +68,8 @@ async function init() {
       $("cur").hidden = false;
       $("cur").innerHTML = `<i class="fa-solid fa-tag"></i> <span>${t("pagePrice", "<b>" + money(pr.min, pr.currency) + "</b>")}</span><button class="info loc" id="locate" title="${t("showOnPage")}"><i class="fa-solid fa-location-crosshairs"></i></button>`;
       $("locate").addEventListener("click", async () => {
-        const [{ result: ok }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: highlightPrice, args: [pr.min, pr.currency, pr.ctx || "", t("highlightLabel", money(pr.min, pr.currency))] });
+        await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["pagelib.js"] });
+        const [{ result: ok }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: (...a) => window.cf.highlight(...a), args: [pr.min, pr.currency, pr.ctx || "", t("highlightLabel", money(pr.min, pr.currency))] });
         $("status").textContent = ok ? "" : t("notOnPage");
       });
     }
@@ -81,20 +82,39 @@ async function init() {
 }
 
 
+// Little carry-on / checked-bag indicators for a result: green = included, red = not included, grey = couldn't tell.
+function bagsHtml(r) {
+  if (r.status !== "done" || !r.bags) return "";
+  const one = (b, icon, label) => {
+    const st = { yes: ["yes", "fa-check", t("bagIncl")], no: ["no", "fa-xmark", t("bagNot")], unknown: ["unk", "fa-question", t("bagUnk")] }[b.state];
+    const tip = `${label}: ${st[2]}${b.ev ? " — " + b.ev : ""}`.replace(/"/g, "&quot;");
+    return `<span class="bg ${st[0]}" title="${tip}"><i class="fa-solid ${icon}"></i><i class="fa-solid ${st[1]} s"></i></span>`;
+  };
+  let warn = "";
+  if (state.checked && r.bags.checked.state === "no") warn = t("warnChecked");
+  else if (state.carry && r.bags.carry.state === "no") warn = t("warnCarry");
+  return `<div class="bgs">${one(r.bags.carry, "fa-suitcase-rolling", t("carryOn"))}${one(r.bags.checked, "fa-suitcase", t("checkedBag"))}</div>` +
+    (warn ? `<small class="warnline"><i class="fa-solid fa-triangle-exclamation"></i> ${warn}</small>` : "");
+}
+
 function render(results) {
   const entries = Object.entries(results || {});
   $("res").classList.toggle("show", entries.length > 0);
   if (!entries.length) return;
   const done = entries.filter(([, r]) => r.status === "done");
   const pending = entries.filter(([, r]) => r.status === "loading").length;
-  const best = done.length ? Math.min(...done.map(([, r]) => r.price)) : null;
+  // A result that lacks a bag the user asked for can't be "cheapest" (unless nothing else is left).
+  const lacks = (r) => r.status === "done" && r.bags && ((state.checked && r.bags.checked.state === "no") || (state.carry && r.bags.carry.state === "no"));
+  const okRows = done.filter(([, r]) => !lacks(r));
+  const pool = okRows.length ? okRows : done;
+  const best = pool.length ? Math.min(...pool.map(([, r]) => r.price)) : null;
   $("bar").style.width = Math.round(((entries.length - pending) / entries.length) * 100) + "%";
   $("go").disabled = pending > 0;
   $("go").querySelector("span").textContent = pending ? t("checking") : t("searchOthers");
 
   const sum = $("summary");
   if (best !== null) {
-    const w = done.find(([, r]) => r.price === best)[1];
+    const w = pool.find(([, r]) => r.price === best)[1];
     sum.className = "summary";
     sum.innerHTML = `<i class="fa-solid fa-trophy"></i><span>${t("cheapestSummary", w.name, money(best, w.currency))}${pending ? t("stillChecking") : ""}</span>`;
   } else {
@@ -107,7 +127,7 @@ function render(results) {
   $("results").innerHTML = "";
   entries.sort((a, b) => rank(a[1]) - rank(b[1])).forEach(([id, r]) => {
     const ui = SITE_UI[id] || { c: "#64748b", l: r.name[0] };
-    const isBest = r.status === "done" && r.price === best && done.length > 1;
+    const isBest = r.status === "done" && r.price === best && done.length > 1 && !lacks(r);
     let small = "", price = "";
     if (r.status === "loading") {
       small = '<i class="fa-solid fa-spinner fa-spin"></i> ' + t("loadingRes"); price = '<div class="skel"></div>';
@@ -125,7 +145,7 @@ function render(results) {
     }
     const cls = state.trip === "one" && curPrice && r.status === "done" && r.currency === curCur ? (curPrice > r.price ? "cheaper" : curPrice < r.price ? "pricier" : "") : "";
     const a = document.createElement("a");
-    a.className = `site ${r.status}${isBest ? " best" : ""}`;
+    a.className = `site ${r.status}${isBest ? " best" : ""}${lacks(r) ? " warn" : ""}`;
     a.href = r.url; a.target = "_blank";
     if (r.status === "done") {
       a.title = t("showOnPage");
@@ -134,7 +154,7 @@ function render(results) {
         chrome.runtime.sendMessage({ type: "open", url: r.url, price: r.price, currency: r.currency, ctx: r.ctx, label: t("highlightLabel", money(r.price, r.currency)) });
       });
     }
-    a.innerHTML = `<span class="logo" style="--c:${ui.c}">${ui.l}</span><div class="meta"><b>${r.name}</b><small class="${cls}">${small}</small></div><div class="end">${price}</div>`;
+    a.innerHTML = `<span class="logo" style="--c:${ui.c}">${ui.l}</span><div class="meta"><b>${r.name}</b><small class="${cls}">${small}</small>${bagsHtml(r)}</div><div class="end">${price}</div>`;
     $("results").appendChild(a);
     if (r.ctx) {
       const btn = document.createElement("button");

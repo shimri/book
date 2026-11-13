@@ -157,5 +157,20 @@
  },
  "noSources": {
   "message": "Выберите хотя бы один источник."
+ },
+ "bagIncl": {
+  "message": "Включено"
+ },
+ "bagNot": {
+  "message": "Не включено"
+ },
+ "bagUnk": {
+  "message": "Неизвестно"
+ },
+ "warnChecked": {
+  "message": "В этой цене нет багажа"
+ },
+ "warnCarry": {
+  "message": "В этой цене нет ручной клади"
  }
 }

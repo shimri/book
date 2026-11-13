@@ -157,5 +157,20 @@
  },
  "noSources": {
   "message": "בחרו לפחות מקור אחד."
+ },
+ "bagIncl": {
+  "message": "כלול"
+ },
+ "bagNot": {
+  "message": "לא כלול"
+ },
+ "bagUnk": {
+  "message": "לא ידוע"
+ },
+ "warnChecked": {
+  "message": "לא כולל מזוודה במחיר הזה"
+ },
+ "warnCarry": {
+  "message": "לא כולל טרולי במחיר הזה"
  }
 }

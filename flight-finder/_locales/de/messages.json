@@ -157,5 +157,20 @@
  },
  "noSources": {
   "message": "Wählen Sie mindestens eine Quelle."
+ },
+ "bagIncl": {
+  "message": "Inklusive"
+ },
+ "bagNot": {
+  "message": "Nicht inklusive"
+ },
+ "bagUnk": {
+  "message": "Unbekannt"
+ },
+ "warnChecked": {
+  "message": "Kein Aufgabegepäck bei diesem Preis"
+ },
+ "warnCarry": {
+  "message": "Kein Handgepäck bei diesem Preis"
  }
 }

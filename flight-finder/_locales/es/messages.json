@@ -157,5 +157,20 @@
  },
  "noSources": {
   "message": "Selecciona al menos una fuente."
+ },
+ "bagIncl": {
+  "message": "Incluido"
+ },
+ "bagNot": {
+  "message": "No incluido"
+ },
+ "bagUnk": {
+  "message": "No se sabe"
+ },
+ "warnChecked": {
+  "message": "Sin maleta facturada a este precio"
+ },
+ "warnCarry": {
+  "message": "Sin equipaje de mano a este precio"
  }
 }

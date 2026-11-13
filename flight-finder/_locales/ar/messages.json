@@ -157,5 +157,20 @@
  },
  "noSources": {
   "message": "اختر مصدرًا واحدًا على الأقل."
+ },
+ "bagIncl": {
+  "message": "مشمول"
+ },
+ "bagNot": {
+  "message": "غير مشمول"
+ },
+ "bagUnk": {
+  "message": "غير معروف"
+ },
+ "warnChecked": {
+  "message": "لا تشمل حقيبة مسجّلة بهذا السعر"
+ },
+ "warnCarry": {
+  "message": "لا تشمل حقيبة يد بهذا السعر"
  }
 }

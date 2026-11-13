@@ -157,5 +157,20 @@
  },
  "noSources": {
   "message": "Select at least one source."
+ },
+ "bagIncl": {
+  "message": "Included"
+ },
+ "bagNot": {
+  "message": "Not included"
+ },
+ "bagUnk": {
+  "message": "Couldn't tell"
+ },
+ "warnChecked": {
+  "message": "No checked bag at this price"
+ },
+ "warnCarry": {
+  "message": "No carry-on at this price"
  }
 }

@@ -63,6 +63,11 @@
   .badge { font-size:10.5px; font-weight:700; background:var(--ok); color:#fff; padding:2px 7px; border-radius:99px; display:inline-flex; gap:4px; align-items:center; }
   .skel { width:56px; height:18px; border-radius:6px; background:linear-gradient(90deg,var(--line),var(--bg),var(--line)); background-size:200% 100%; animation:sh 1.2s infinite linear; }
   @keyframes sh { to { background-position:-200% 0; } }
+  .bgs { display:flex; gap:5px; margin-top:5px; }
+  .bg { display:inline-flex; align-items:center; gap:3px; font-size:11px; padding:2px 6px; border-radius:6px; background:var(--bg); color:var(--muted); }
+  .bg .s { font-size:9px; } .bg.yes { color:var(--ok); background:var(--ok-bg); } .bg.no { color:var(--err); background:var(--err-bg); }
+  .site.warn { border-inline-start-color:#f59e0b; } .site.warn .price { color:var(--muted); }
+  .meta .warnline { color:var(--warn); margin-top:4px; }
   .info { border:0; background:none; color:var(--muted); cursor:pointer; padding:2px; font-size:12px; } .info:hover { color:var(--brand); }
   .ctx { margin:-2px 4px 0; padding:6px 8px; font-size:11px; color:var(--muted); direction:ltr; text-align:left; background:var(--bg); border-radius:8px; display:none; } .ctx.show { display:block; }
   #status { font-size:12px; color:var(--muted); text-align:center; min-height:14px; }
@@ -113,7 +118,6 @@
 </main>
 <script src="extract.js"></script>
 <script src="parse.js"></script>
-<script src="highlight.js"></script>
 <script src="popup.js"></script>
 </body>
 </html>
