@@ -3,13 +3,13 @@ importScripts("extract.js");
 const ymd = (d) => d.slice(2).replace(/-/g, "");
 const SITES = [
   { id: "google", name: "Google Flights", url: (p) =>
-    `https://www.google.com/travel/flights?q=${encodeURIComponent(`Flights from ${p.from} to ${p.to} on ${p.dep}${p.ret ? " through " + p.ret : ""}`)}&curr=ILS&hl=en` },
+    `https://www.google.com/travel/flights?q=${encodeURIComponent(`Flights from ${p.from} to ${p.to} on ${p.dep}${p.ret ? " through " + p.ret : ""}`)}&curr=${p.cur}&hl=en` },
   { id: "skyscanner", name: "Skyscanner", url: (p) =>
-    `https://www.skyscanner.co.il/transport/flights/${p.from}/${p.to}/${ymd(p.dep)}/${p.ret ? ymd(p.ret) + "/" : ""}?adultsv2=${p.adults}&currency=ILS` },
+    `https://www.skyscanner.co.il/transport/flights/${p.from}/${p.to}/${ymd(p.dep)}/${p.ret ? ymd(p.ret) + "/" : ""}?adultsv2=${p.adults}&currency=${p.cur}` },
   { id: "kayak", name: "Kayak", url: (p) =>
-    `https://www.kayak.com/flights/${p.from}-${p.to}/${p.dep}${p.ret ? "/" + p.ret : ""}/${p.adults}adults?currency=ILS` },
+    `https://www.kayak.com/flights/${p.from}-${p.to}/${p.dep}${p.ret ? "/" + p.ret : ""}/${p.adults}adults?currency=${p.cur}` },
   { id: "momondo", name: "Momondo", url: (p) =>
-    `https://www.momondo.com/flight-search/${p.from}-${p.to}/${p.dep}${p.ret ? "/" + p.ret : ""}/${p.adults}adults?currency=ILS` },
+    `https://www.momondo.com/flight-search/${p.from}-${p.to}/${p.dep}${p.ret ? "/" + p.ret : ""}/${p.adults}adults?currency=${p.cur}` },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -31,10 +31,10 @@ async function scrapeSite(site, params, myRun) {
     let last = null;
     while (Date.now() < deadline && myRun === runId) {
       await sleep(3000);
-      const [{ result }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: extractPrices });
+      const [{ result }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: extractPrices, args: [params.cur] });
       // Accept once the same minimum shows up on two consecutive reads (page finished rendering).
       if (result && result.min && result.min === last) {
-        await publish(site.id, { status: "done", price: result.min });
+        await publish(site.id, { status: "done", price: result.min, currency: result.currency });
         return;
       }
       last = result ? result.min : null;

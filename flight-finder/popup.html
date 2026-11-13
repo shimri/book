@@ -25,11 +25,13 @@
   <div><label>חזור</label><input id="ret" type="date"></div>
 </div>
 <label>נוסעים</label><input id="adults" type="number" min="1" max="9" value="1">
+<label style="display:flex;gap:6px;align-items:center;margin-top:10px"><input id="oneway" type="checkbox" style="width:auto"> כיוון אחד בלבד (בלי חזור)</label>
 <button id="go">חפש באתרים אחרים</button>
 <div id="cur" class="cur" hidden></div>
 <div id="results"></div>
 <div id="status"></div>
 <script src="extract.js"></script>
+<script src="parse.js"></script>
 <script src="popup.js"></script>
 </body>
 </html>
