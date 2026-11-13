@@ -137,5 +137,19 @@
  },
  "infoTitle": {
   "message": "Откуда взята эта цена?"
+ },
+ "showOnPage": {
+  "message": "Показать эту цену на странице"
+ },
+ "highlightLabel": {
+  "message": "Цена, считанная расширением: $P1$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "notOnPage": {
+  "message": "Не удалось найти эту цену на странице."
  }
 }

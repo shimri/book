@@ -48,7 +48,11 @@ async function init() {
     if (pr && pr.min) {
       curPrice = pr.min; curCur = pr.currency;
       $("cur").hidden = false;
-      $("cur").innerHTML = `<i class="fa-solid fa-tag"></i> <span>${t("pagePrice", "<b>" + money(pr.min, pr.currency) + "</b>")}</span>`;
+      $("cur").innerHTML = `<i class="fa-solid fa-tag"></i> <span>${t("pagePrice", "<b>" + money(pr.min, pr.currency) + "</b>")}</span><button class="info loc" id="locate" title="${t("showOnPage")}"><i class="fa-solid fa-location-crosshairs"></i></button>`;
+      $("locate").addEventListener("click", async () => {
+        const [{ result: ok }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: highlightPrice, args: [pr.min, pr.currency, pr.ctx || "", t("highlightLabel", money(pr.min, pr.currency))] });
+        $("status").textContent = ok ? "" : t("notOnPage");
+      });
     }
     $("status").textContent = p.dep || p.to ? t("statusRead") : t("statusNotFound");
   } catch {
@@ -109,6 +113,13 @@ function render(results) {
     const a = document.createElement("a");
     a.className = `site ${r.status}${isBest ? " best" : ""}`;
     a.href = r.url; a.target = "_blank";
+    if (r.status === "done") {
+      a.title = t("showOnPage");
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        chrome.runtime.sendMessage({ type: "open", url: r.url, price: r.price, currency: r.currency, ctx: r.ctx, label: t("highlightLabel", money(r.price, r.currency)) });
+      });
+    }
     a.innerHTML = `<span class="logo" style="--c:${ui.c}">${ui.l}</span><div class="meta"><b>${r.name}</b><small class="${cls}">${small}</small></div><div class="end">${price}</div>`;
     $("results").appendChild(a);
     if (r.ctx) {

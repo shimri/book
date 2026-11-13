@@ -137,5 +137,19 @@
  },
  "infoTitle": {
   "message": "Where was this price read from?"
+ },
+ "showOnPage": {
+  "message": "Show this price on the page"
+ },
+ "highlightLabel": {
+  "message": "Price read by the extension: $P1$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "notOnPage": {
+  "message": "Couldn't find this price on the page."
  }
 }

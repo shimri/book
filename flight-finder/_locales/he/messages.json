@@ -137,5 +137,19 @@
  },
  "infoTitle": {
   "message": "מאיפה נלקח המחיר?"
+ },
+ "showOnPage": {
+  "message": "הצג את המחיר בעמוד"
+ },
+ "highlightLabel": {
+  "message": "המחיר שהתוסף קרא: $P1$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "notOnPage": {
+  "message": "לא הצלחנו למצוא את המחיר בעמוד."
  }
 }

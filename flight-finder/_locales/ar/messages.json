@@ -137,5 +137,19 @@
  },
  "infoTitle": {
   "message": "من أين قُرئ هذا السعر؟"
+ },
+ "showOnPage": {
+  "message": "أظهر هذا السعر في الصفحة"
+ },
+ "highlightLabel": {
+  "message": "السعر الذي قرأته الإضافة: $P1$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "notOnPage": {
+  "message": "تعذّر العثور على هذا السعر في الصفحة."
  }
 }

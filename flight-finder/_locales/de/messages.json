@@ -137,5 +137,19 @@
  },
  "infoTitle": {
   "message": "Woher stammt dieser Preis?"
+ },
+ "showOnPage": {
+  "message": "Diesen Preis auf der Seite zeigen"
+ },
+ "highlightLabel": {
+  "message": "Von der Erweiterung gelesener Preis: $P1$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "notOnPage": {
+  "message": "Preis auf der Seite nicht gefunden."
  }
 }

@@ -1,4 +1,4 @@
-importScripts("extract.js");
+importScripts("extract.js", "highlight.js");
 
 const ymd = (d) => d.slice(2).replace(/-/g, "");
 const SITES = [
@@ -47,7 +47,23 @@ async function scrapeSite(site, params, myRun) {
   }
 }
 
+// Open a result site and keep trying to highlight the price the extension read (pages render late).
+async function openAndHighlight(msg) {
+  const tab = await chrome.tabs.create({ url: msg.url, active: true });
+  const deadline = Date.now() + 30000;
+  while (Date.now() < deadline) {
+    await sleep(1500);
+    try {
+      const [{ result }] = await chrome.scripting.executeScript({
+        target: { tabId: tab.id }, func: highlightPrice, args: [msg.price, msg.currency, msg.ctx || "", msg.label],
+      });
+      if (result) return;
+    } catch { return; } // tab closed or not scriptable
+  }
+}
+
 chrome.runtime.onMessage.addListener((msg) => {
+  if (msg.type === "open") { openAndHighlight(msg); return; }
   if (msg.type === "reset") {
     runId++; // running scrapes notice this, stop, and close their tabs
     results = {};

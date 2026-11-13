@@ -137,5 +137,19 @@
  },
  "infoTitle": {
   "message": "¿De dónde se leyó este precio?"
+ },
+ "showOnPage": {
+  "message": "Mostrar este precio en la página"
+ },
+ "highlightLabel": {
+  "message": "Precio leído por la extensión: $P1$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "notOnPage": {
+  "message": "No se encontró este precio en la página."
  }
 }
