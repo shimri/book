@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "טיסות זולות - השוואת מחירים",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "קורא את החיפוש שלך באתר חברת תעופה ומציג מחירים מתחרים מאתרי השוואה.",
   "permissions": ["activeTab", "scripting", "storage"],
   "host_permissions": [
@@ -11,5 +11,6 @@
     "https://www.momondo.com/*"
   ],
   "background": { "service_worker": "background.js" },
-  "action": { "default_popup": "popup.html", "default_title": "השוואת מחירי טיסות" }
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "action": { "default_popup": "popup.html", "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png" }, "default_title": "השוואת מחירי טיסות" }
 }

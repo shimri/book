@@ -41,27 +41,77 @@ async function init() {
     if (pr && pr.min) {
       curPrice = pr.min; curCur = pr.currency;
       $("cur").hidden = false;
-      $("cur").textContent = "המחיר הזול בעמוד הנוכחי: " + money(pr.min, pr.currency) + " (לרוב לכיוון אחד)";
+      $("cur").innerHTML = `<i class="fa-solid fa-tag"></i> המחיר הזול בעמוד הנוכחי: <b>${money(pr.min, pr.currency)}</b> (לרוב לכיוון אחד)`;
     }
     $("status").textContent = p.dep || p.to ? "הנתונים נקראו מהעמוד, אפשר לתקן." : "לא זוהה חיפוש בעמוד, מלאו ידנית.";
   } catch {
     $("status").textContent = "לא ניתן לקרוא את העמוד, מלאו ידנית.";
   }
+  // Re-render now that the page price/currency are known (needed for the per-row comparison).
+  chrome.storage.session.get("results").then((s) => render(s.results));
 }
 
+const SITE_UI = {
+  google: { c: "#4285f4", l: "G" }, skyscanner: { c: "#0770e3", l: "S" },
+  kayak: { c: "#ff690f", l: "K" }, momondo: { c: "#e6007e", l: "M" },
+};
+
 function render(results) {
-  const rows = Object.values(results || {});
-  const prices = rows.filter((r) => r.status === "done").map((r) => r.price);
-  const best = prices.length ? Math.min(...prices) : null;
+  const entries = Object.entries(results || {});
+  $("res").classList.toggle("show", entries.length > 0);
+  if (!entries.length) return;
+  const done = entries.filter(([, r]) => r.status === "done");
+  const pending = entries.filter(([, r]) => r.status === "loading").length;
+  const best = done.length ? Math.min(...done.map(([, r]) => r.price)) : null;
+  $("bar").style.width = Math.round(((entries.length - pending) / entries.length) * 100) + "%";
+  $("go").disabled = pending > 0;
+  $("go").querySelector("span").textContent = pending ? "בודק…" : "חפש באתרים אחרים";
+
+  const sum = $("summary");
+  if (best !== null) {
+    const w = done.find(([, r]) => r.price === best)[1];
+    sum.className = "summary";
+    sum.innerHTML = `<i class="fa-solid fa-trophy"></i><span>הזול ביותר: ${w.name} · ${money(best, w.currency)}${pending ? " (עדיין בודק…)" : ""}</span>`;
+  } else {
+    sum.className = "summary wait";
+    sum.innerHTML = pending ? `<i class="fa-solid fa-spinner fa-spin"></i><span>בודק ${pending} אתרים ברקע…</span>`
+      : `<i class="fa-solid fa-triangle-exclamation"></i><span>לא נמצאו מחירים. לחצו על אתר כדי לפתוח אותו.</span>`;
+  }
+
+  const rank = (r) => (r.status === "done" ? r.price : r.status === "loading" ? 1e8 : 1e9);
   $("results").innerHTML = "";
-  rows.sort((a, b) => (a.price ?? 1e9) - (b.price ?? 1e9)).forEach((r) => {
-    const d = document.createElement("div");
-    d.className = "r";
-    const val = r.status === "loading" ? "טוען…" : r.status === "fail" ? "לא נמצא" : money(r.price, r.currency);
-    d.title = r.ctx || "";
-    d.innerHTML = `<a href="${r.url}" target="_blank"><i class="fa-solid ${r.status === "loading" ? "fa-spinner fa-spin" : "fa-arrow-up-right-from-square"}"></i> ${r.name}</a><span class="p ${r.price === best ? "best" : ""}">${val}</span>`;
-    if (r.ctx) { const s = document.createElement("div"); s.className = "ctx"; s.textContent = "נמצא ליד: " + r.ctx; d.append(s); }
-    $("results").appendChild(d);
+  entries.sort((a, b) => rank(a[1]) - rank(b[1])).forEach(([id, r]) => {
+    const ui = SITE_UI[id] || { c: "#64748b", l: r.name[0] };
+    const isBest = r.status === "done" && r.price === best && done.length > 1;
+    let small = "", price = "";
+    if (r.status === "loading") {
+      small = '<i class="fa-solid fa-spinner fa-spin"></i> טוען תוצאות…'; price = '<div class="skel"></div>';
+    } else if (r.status === "fail") {
+      small = '<i class="fa-solid fa-triangle-exclamation"></i> לא נמצא מחיר · לחצו לפתיחה'; price = '<i class="fa-solid fa-arrow-up-right-from-square" style="color:var(--muted)"></i>';
+    } else {
+      price = `<span class="price">${money(r.price, r.currency)}</span>` + (isBest ? '<span class="badge"><i class="fa-solid fa-star"></i> הזול ביותר</span>' : "");
+      small = '<i class="fa-solid fa-circle-check"></i> נמצא מחיר';
+      if (state.trip === "one" && curPrice && r.currency === curCur) {
+        const d = curPrice - r.price;
+        if (d > 0) small = `<i class="fa-solid fa-arrow-trend-down"></i> זול ב-${money(d, r.currency)} מהעמוד שלכם`;
+        else if (d < 0) small = `<i class="fa-solid fa-arrow-trend-up"></i> יקר ב-${money(-d, r.currency)} מהעמוד שלכם`;
+        else small = "אותו מחיר כמו בעמוד שלכם";
+      }
+    }
+    const cls = state.trip === "one" && curPrice && r.status === "done" && r.currency === curCur ? (curPrice > r.price ? "cheaper" : curPrice < r.price ? "pricier" : "") : "";
+    const a = document.createElement("a");
+    a.className = `site ${r.status}${isBest ? " best" : ""}`;
+    a.href = r.url; a.target = "_blank";
+    a.innerHTML = `<span class="logo" style="--c:${ui.c}">${ui.l}</span><div class="meta"><b>${r.name}</b><small class="${cls}">${small}</small></div><div class="end">${price}</div>`;
+    $("results").appendChild(a);
+    if (r.ctx) {
+      const btn = document.createElement("button");
+      btn.className = "info"; btn.title = "מאיפה נלקח המחיר?"; btn.innerHTML = '<i class="fa-solid fa-circle-info"></i>';
+      const ctx = document.createElement("div"); ctx.className = "ctx"; ctx.textContent = r.ctx;
+      btn.addEventListener("click", (e) => { e.preventDefault(); ctx.classList.toggle("show"); });
+      a.querySelector(".end").append(btn);
+      $("results").appendChild(ctx);
+    }
   });
 }
 
@@ -84,6 +134,9 @@ $("reset").addEventListener("click", () => {
   chrome.runtime.sendMessage({ type: "reset" });
   ["dep", "ret", "to"].forEach((id) => ($(id).value = ""));
   $("results").innerHTML = "";
+  $("res").classList.remove("show");
+  $("go").disabled = false;
+  $("go").querySelector("span").textContent = "חפש באתרים אחרים";
   $("cur").hidden = true;
   Object.assign(state, { trip: "round", adults: 1, carry: false, checked: false });
   paintUI(); saveUI();
