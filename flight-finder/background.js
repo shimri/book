@@ -34,7 +34,7 @@ async function scrapeSite(site, params, myRun) {
       const [{ result }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: extractPrices, args: [params.cur] });
       // Accept once the same minimum shows up on two consecutive reads (page finished rendering).
       if (result && result.min && result.min === last) {
-        await publish(site.id, { status: "done", price: result.min, currency: result.currency });
+        await publish(site.id, { status: "done", price: result.min, currency: result.currency, ctx: result.ctx });
         return;
       }
       last = result ? result.min : null;

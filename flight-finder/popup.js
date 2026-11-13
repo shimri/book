@@ -58,7 +58,9 @@ function render(results) {
     const d = document.createElement("div");
     d.className = "r";
     const val = r.status === "loading" ? "טוען…" : r.status === "fail" ? "לא נמצא" : money(r.price, r.currency);
+    d.title = r.ctx || "";
     d.innerHTML = `<a href="${r.url}" target="_blank"><i class="fa-solid ${r.status === "loading" ? "fa-spinner fa-spin" : "fa-arrow-up-right-from-square"}"></i> ${r.name}</a><span class="p ${r.price === best ? "best" : ""}">${val}</span>`;
+    if (r.ctx) { const s = document.createElement("div"); s.className = "ctx"; s.textContent = "נמצא ליד: " + r.ctx; d.append(s); }
     $("results").appendChild(d);
   });
 }
