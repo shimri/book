@@ -1,34 +1,133 @@
-// Injected into result pages (isolated world). Exposes window.cf = { find, highlight, bags }.
+// Injected into result pages (isolated world). Exposes window.cf = { extract, find, highlight, bags }.
+// Core idea: a price only counts if it sits inside a flight OFFER CARD – the smallest container that holds
+// at least two clock times (departure/arrival) plus flight details (nonstop/stops/duration).
+// That excludes price-alert widgets, day tabs, filter lists, hotel/car ads, etc.
 (() => {
-  const cf = (window.cf = window.cf || {});
-  const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const AD = /hotel|\broom|\bnights?\b|\bcar\b|\brental|per day|מלון|חדר|לילה|השכרת|רכב/i;
+  if (window.cf && window.cf.v === 3) return;
+  const cf = (window.cf = { v: 3 });
 
-  // Locate the element showing `price` and the "card" (offer container) around it. ctx = text seen near the price.
+  const code = (t) => {
+    t = t.toLowerCase();
+    if (/₪|ils|nis|shekel/.test(t)) return "ILS";
+    if (/\$|usd|dollar/.test(t)) return "USD";
+    if (/€|eur/.test(t)) return "EUR";
+    if (/£|gbp/.test(t)) return "GBP";
+    return null;
+  };
+  const NUM = "(\\d{1,3}(?:[,.\\u00a0\\u202f ]\\d{3})+|\\d{2,6})(?:[.,]\\d{1,2})?";
+  const CUR = "([$€₪£]|USD|EUR|ILS|NIS|GBP|Israeli new shekels?|US dollars?|euros?)";
+  const PRICE_RE = new RegExp(`${CUR}\\s?${NUM}(?!\\d)|${NUM}\\s?${CUR}`, "gi"); // shared: matchAll works on a copy
+  const QUICK = /[$€₪£]|USD|EUR|ILS|NIS|GBP|shekel|dollar|euro/i; // cheap pre-check before the full parse
+  const inRange = (cur, n) => (cur === "ILS" ? n >= 150 && n <= 40000 : n >= 40 && n <= 15000);
+  const parse = (text) => {
+    const out = [];
+    for (const m of text.matchAll(PRICE_RE)) {
+      const cur = code(m[1] || m[4] || ""), raw = m[2] || m[3];
+      const n = parseInt(raw.replace(/[,.   ]/g, ""), 10);
+      if (cur && inRange(cur, n)) out.push({ n, cur });
+    }
+    return out;
+  };
+
+  const TIME = /(?<!\d)\d{1,2}:\d{2}(?!\d)/g;
+  // Text of an element with a space between every text node (so "El Al" + "16:50" never glue together). innerText is far slower.
+  let cache = new Map(), lenCache = new Map();
+  const tlen = (e) => { // cached textContent length: building it for <body> once per text node would cost seconds
+    let v = lenCache.get(e);
+    if (v === undefined) { v = e.textContent.length; lenCache.set(e, v); }
+    return v;
+  };
+  const txt = (n) => {
+    let s = cache.get(n);
+    if (s === undefined) {
+      s = "";
+      const w = document.createTreeWalker(n, NodeFilter.SHOW_TEXT);
+      for (let x; (x = w.nextNode()); ) s += x.nodeValue + " ";
+      cache.set(n, s);
+    }
+    return s;
+  };
+  const FLIGHTISH = /non-?stop|direct|\bstops?\b|\bstop\b|ישיר|עצירה|\b\d+\s?h\b|\b\d+\s?hr|\bflight\b|\bлет\b|escala|escale|nonstop/i;
+  const PROMO = /alert|notify|we expect|expect prices|recommended|better deal|chances of success|track prices|sign up|newsletter|hotel|per night|car rental|per day|התראה|מלון|השכרת/i;
+
+  const visible = (el) => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && getComputedStyle(el).visibility !== "hidden"; };
+  const struck = (el) => {
+    for (let n = el, i = 0; n && i < 4; n = n.parentElement, i++) {
+      if (/^(S|DEL|STRIKE)$/.test(n.tagName) || /line-through/.test(getComputedStyle(n).textDecorationLine)) return true;
+    }
+    return false;
+  };
+
+  // Smallest ancestor holding >= 2 clock times; accepted only if it looks like one flight offer.
+  const cardOf = (el) => {
+    let n = el;
+    for (let i = 0; i < 14 && n.parentElement; i++) {
+      n = n.parentElement;
+      if (tlen(n) > 1800) return null; // cheap guard before building the spaced text
+      const t = txt(n);
+      const times = (t.match(TIME) || []).length;
+      if (times >= 2) {
+        if (times > 8 || PROMO.test(t) || !FLIGHTISH.test(t)) return null;
+        // A container that holds some OTHER offer-like area (>= 2 times + a price) is a list, not a card.
+        for (const d of n.querySelectorAll("*")) {
+          if (d === el || d.contains(el)) continue;
+          if ((txt(d).match(TIME) || []).length >= 2 && parse(txt(d)).length) return null;
+        }
+        return n;
+      }
+    }
+    return null;
+  };
+
+  // All prices that sit in offer cards: [{ price, cur, el, card }] (one entry per card = its cheapest current price).
+  const offers = () => {
+    cache = new Map(); lenCache = new Map();
+    const byCard = new Map(), seen = new Set();
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    for (let node; (node = walker.nextNode()); ) {
+      if (!/[\d$€₪£]/.test(node.nodeValue)) continue;
+      let el = node.parentElement;
+      if (!el || /^(SCRIPT|STYLE|NOSCRIPT)$/.test(el.tagName)) continue;
+      // price may be split across spans ("US$" + "208"): climb while the text is still short
+      const hasPrice = (e) => { const t = e.textContent; return QUICK.test(t) && /\d{2}/.test(t); };
+      for (let i = 0; i < 3 && el && !hasPrice(el); i++) {
+        const p = el.parentElement;
+        el = p && tlen(p) <= 40 ? p : null;
+      }
+      if (!el || el.textContent.length > 40 || seen.has(el)) continue;
+      seen.add(el);
+      const ps = parse(el.textContent);
+      if (!ps.length || !visible(el) || struck(el)) continue;
+      const card = cardOf(el);
+      if (!card) continue;
+      const cur = byCard.get(card);
+      if (!cur || ps[0].n < cur.price) byCard.set(card, { price: ps[0].n, cur: ps[0].cur, el, card });
+    }
+    return [...byCard.values()];
+  };
+  const pickCurrency = (list, wanted) => {
+    const counts = {};
+    list.forEach((o) => (counts[o.cur] = (counts[o.cur] || 0) + 1));
+    const cur = wanted && counts[wanted] ? wanted : Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0];
+    return list.filter((o) => o.cur === cur);
+  };
+
+  const compact = (s) => s.replace(/\s+/g, " ").trim();
+  cf.extract = (wanted) => {
+    const list = pickCurrency(offers(), wanted);
+    if (!list.length) return { min: null, count: 0, currency: wanted || null };
+    const best = list.reduce((a, b) => (b.price < a.price ? b : a));
+    return { min: best.price, ctx: compact(best.card.innerText || best.card.textContent).slice(0, 140), count: list.length, currency: best.cur };
+  };
+
+  // Locate the price element + its offer card (best match to the context text).
   cf.find = (price, cur, ctx) => {
-    const sym = { USD: "$", EUR: "€", ILS: "₪", GBP: "£" }[cur] || "";
-    const num = price >= 1000 ? `${Math.floor(price / 1000)},${String(price % 1000).padStart(3, "0")}` : String(price);
-    const codes = "USD|EUR|ILS|NIS|GBP";
-    const re = new RegExp(`(?:^|[^\\d,.])(?:${sym ? esc(sym) + "\\s?" + num + "|" + num + "\\s?" + esc(sym) + "|" : ""}(?:${codes})\\s?${num}|${num}\\s?(?:${codes}|shekels?|dollars?))(?!\\d)`, "i");
-    const matches = (el) => el.innerText && el.innerText.length <= 60 && re.test(el.innerText);
-    const visible = (el) => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && getComputedStyle(el).visibility !== "hidden"; };
-    let cands = [...document.body.querySelectorAll("*")].filter((el) => matches(el) && visible(el));
-    cands = cands.filter((el) => ![...el.children].some((c) => matches(c))); // deepest only
-    if (!cands.length) return null;
-    // Card = largest ancestor holding this candidate and no other matching price.
-    const card = (el) => {
-      let n = el;
-      while (n.parentElement && n.parentElement !== document.body && (n.parentElement.innerText || "").length <= 800
-             && !cands.some((c) => c !== el && n.parentElement.contains(c))) n = n.parentElement;
-      return n;
-    };
+    const list = offers().filter((o) => o.price === price && (!cur || o.cur === cur));
+    if (!list.length) return null;
     const words = (ctx || "").toLowerCase().split(/[^\p{L}\d]+/u).filter((w) => w.length >= 3 && !/^\d+$/.test(w));
-    const score = (el) => {
-      const t = card(el).innerText.toLowerCase();
-      return words.filter((w) => t.includes(w)).length - (AD.test(t) ? 100 : 0);
-    };
-    const el = cands.map((e) => [e, score(e)]).sort((a, b) => b[1] - a[1])[0][0];
-    return { el, card: card(el) };
+    const score = (o) => { const t = txt(o.card).toLowerCase(); return words.filter((w) => t.includes(w)).length; };
+    const o = list.map((x) => [x, score(x)]).sort((a, b) => b[1] - a[1])[0][0];
+    return { el: o.el, card: o.card };
   };
 
   cf.highlight = (price, cur, ctx, label) => {

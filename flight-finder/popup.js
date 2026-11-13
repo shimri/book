@@ -62,7 +62,8 @@ async function init() {
     if (p.ret) $("ret").value = p.ret;
     if (p.from) $("from").value = p.from;
     if (p.to) $("to").value = p.to;
-    const [{ result: pr }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: extractPrices, args: [null] });
+    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["pagelib.js"] });
+    const [{ result: pr }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: (c) => window.cf.extract(c), args: [null] });
     if (pr && pr.min) {
       curPrice = pr.min; curCur = pr.currency;
       $("cur").hidden = false;

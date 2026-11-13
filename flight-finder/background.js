@@ -1,5 +1,3 @@
-importScripts("extract.js");
-
 const ymd = (d) => d.slice(2).replace(/-/g, "");
 const mdy = (d) => `${d.slice(5, 7)}/${d.slice(8, 10)}/${d.slice(0, 4)}`;
 const SITES = [
@@ -38,12 +36,12 @@ async function scrapeSite(site, params, myRun) {
     let last = null;
     while (Date.now() < deadline && myRun === runId) {
       await sleep(3000);
-      const [{ result }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: extractPrices, args: [params.cur] });
+      await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["pagelib.js"] });
+      const [{ result }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: (c) => window.cf.extract(c), args: [params.cur] });
       // Accept once the same minimum shows up on two consecutive reads (page finished rendering).
       if (result && result.min && result.min === last) {
         let bags = null;
         try {
-          await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["pagelib.js"] });
           [{ result: bags }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: (...a) => window.cf.bags(...a), args: [result.min, result.currency, result.ctx || ""] });
         } catch {}
         await publish(site.id, { status: "done", price: result.min, currency: result.currency, ctx: result.ctx, bags });
