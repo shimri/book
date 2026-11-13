@@ -28,5 +28,8 @@ function extractPrices(wanted) {
   let cur = wanted && buckets[wanted] ? wanted : null;
   if (!cur) cur = Object.keys(buckets).sort((a, b) => buckets[b].length - buckets[a].length)[0] || null;
   if (!cur) return { min: null, count: 0, currency: wanted || null };
-  return { min: Math.min(...buckets[cur]), count: buckets[cur].length, currency: cur };
+  let arr = buckets[cur].slice().sort((a, b) => a - b);
+  // Drop outliers (e.g. "from $40/day" car-rental ads) that are far below the typical fare on the page.
+  if (arr.length >= 5) { const med = arr[Math.floor(arr.length / 2)]; arr = arr.filter((n) => n >= 0.4 * med); }
+  return { min: arr[0], count: arr.length, currency: cur };
 }

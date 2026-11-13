@@ -2,31 +2,78 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
+<link rel="stylesheet" href="vendor/fa/css/fontawesome.min.css">
+<link rel="stylesheet" href="vendor/fa/css/solid.min.css">
 <style>
-  body { font-family: system-ui, sans-serif; width: 300px; margin: 0; padding: 14px; }
-  h1 { font-size: 16px; margin: 0 0 10px; }
-  label { display: block; font-size: 12px; color: #555; margin-top: 8px; }
-  input { width: 100%; box-sizing: border-box; padding: 6px; font-size: 14px; }
-  .row { display: flex; gap: 8px; } .row > div { flex: 1; }
-  button { width: 100%; margin-top: 14px; padding: 10px; font-size: 15px; background: #1a73e8; color: #fff; border: 0; border-radius: 6px; cursor: pointer; }
-  #results { margin-top: 12px; } .r { display:flex; justify-content:space-between; padding:7px 0; border-top:1px solid #eee; font-size:14px; } .r a { color:#1a73e8; text-decoration:none; } .best { font-weight:700; color:#0a8a3a; } .cur { background:#fff8e1; padding:6px; border-radius:6px; font-size:13px; margin-top:10px; }
-  #status { font-size: 12px; color: #777; margin-top: 8px; min-height: 14px; }
-  .code { direction: ltr; text-transform: uppercase; }
+  :root { --blue:#1a73e8; --bg:#f6f8fb; --line:#dfe4ec; --text:#1f2937; --muted:#6b7280; --green:#0a8a3a; }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, "Segoe UI", Arial, sans-serif; width: 340px; margin: 0; padding: 14px; color: var(--text); background: #fff; }
+  h1 { font-size: 16px; margin: 0 0 12px; display:flex; align-items:center; gap:8px; }
+  h1 i { color: var(--blue); }
+  .seg { display:flex; background:var(--bg); border-radius:10px; padding:3px; gap:3px; }
+  .seg button { flex:1; border:0; background:transparent; padding:7px 4px; border-radius:8px; font-size:13px; cursor:pointer; color:var(--muted); display:flex; align-items:center; justify-content:center; gap:6px; }
+  .seg button.on { background:#fff; color:var(--blue); font-weight:600; box-shadow:0 1px 3px rgba(0,0,0,.12); }
+  .route { display:flex; align-items:flex-end; gap:6px; margin-top:12px; }
+  .route .f { flex:1; }
+  .swap { border:1px solid var(--line); background:#fff; border-radius:50%; width:32px; height:32px; cursor:pointer; color:var(--blue); margin-bottom:2px; }
+  label.l { display:block; font-size:12px; color:var(--muted); margin:0 0 4px; }
+  .in { position:relative; }
+  .in i { position:absolute; top:50%; transform:translateY(-50%); inset-inline-start:10px; color:var(--muted); font-size:13px; pointer-events:none; }
+  .in input { width:100%; padding:8px 10px; padding-inline-start:32px; font-size:14px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--text); }
+  .in input:focus { outline:2px solid #cfe0fc; border-color:var(--blue); }
+  input[type=date] { padding-inline-start:10px !important; min-width:0; font-size:13px !important; font-family:inherit; }
+  .row > div { min-width:0; }
+  .code { direction:ltr; text-align:left; text-transform:uppercase; }
+  .row { display:flex; gap:8px; margin-top:10px; } .row > div { flex:1; }
+  .row.dis > div:nth-child(2) { opacity:.4; pointer-events:none; }
+  .pax { display:flex; align-items:center; justify-content:space-between; margin-top:12px; padding:6px 10px; border:1px solid var(--line); border-radius:10px; }
+  .pax .t { display:flex; align-items:center; gap:8px; font-size:14px; }
+  .step { display:flex; align-items:center; gap:10px; }
+  .step button { width:28px; height:28px; border-radius:50%; border:1px solid var(--line); background:#fff; color:var(--blue); cursor:pointer; }
+  .step b { min-width:18px; text-align:center; font-size:15px; }
+  .bags { display:flex; gap:8px; margin-top:10px; }
+  .chip { flex:1; display:flex; align-items:center; justify-content:center; gap:7px; padding:9px 6px; border:1px solid var(--line); border-radius:10px; background:#fff; font-size:13px; cursor:pointer; color:var(--muted); }
+  .chip.on { border-color:var(--blue); background:#eef4ff; color:var(--blue); font-weight:600; }
+  #go { width:100%; margin-top:14px; padding:11px; font-size:15px; background:var(--blue); color:#fff; border:0; border-radius:10px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; }
+  #go:hover { background:#1666cf; }
+  .cur { background:#fff8e1; padding:8px 10px; border-radius:8px; font-size:13px; margin-top:12px; }
+  #results { margin-top:10px; }
+  .r { display:flex; justify-content:space-between; align-items:center; padding:9px 2px; border-top:1px solid var(--line); font-size:14px; }
+  .r a { color:var(--text); text-decoration:none; display:flex; align-items:center; gap:8px; } .r a:hover { color:var(--blue); }
+  .r .p { font-weight:600; } .best { color:var(--green); }
+  #status { font-size:12px; color:var(--muted); margin-top:8px; min-height:14px; }
 </style>
 </head>
 <body>
-<h1>✈️ חפש טיסות זולות יותר</h1>
-<div class="row">
-  <div><label>מוצא (קוד)</label><input id="from" class="code" maxlength="3" placeholder="TLV"></div>
-  <div><label>יעד (קוד)</label><input id="to" class="code" maxlength="3" placeholder="LON"></div>
+<h1><i class="fa-solid fa-plane-departure"></i> חפש טיסות זולות יותר</h1>
+
+<div class="seg" id="trip">
+  <button data-t="round" class="on"><i class="fa-solid fa-arrow-right-arrow-left"></i> הלוך-חזור</button>
+  <button data-t="one"><i class="fa-solid fa-arrow-right"></i> כיוון אחד</button>
 </div>
-<div class="row">
-  <div><label>הלוך</label><input id="dep" type="date"></div>
-  <div><label>חזור</label><input id="ret" type="date"></div>
+
+<div class="route">
+  <div class="f"><label class="l">מוצא</label><div class="in"><i class="fa-solid fa-plane-departure"></i><input id="from" class="code" maxlength="3" placeholder="TLV"></div></div>
+  <button class="swap" id="swap" title="החלף"><i class="fa-solid fa-right-left"></i></button>
+  <div class="f"><label class="l">יעד</label><div class="in"><i class="fa-solid fa-plane-arrival"></i><input id="to" class="code" maxlength="3" placeholder="CDG"></div></div>
 </div>
-<label>נוסעים</label><input id="adults" type="number" min="1" max="9" value="1">
-<label style="display:flex;gap:6px;align-items:center;margin-top:10px"><input id="oneway" type="checkbox" style="width:auto"> כיוון אחד בלבד (בלי חזור)</label>
-<button id="go">חפש באתרים אחרים</button>
+
+<div class="row" id="dates">
+  <div><label class="l">הלוך</label><div class="in"><input id="dep" type="date"></div></div>
+  <div><label class="l">חזור</label><div class="in"><input id="ret" type="date"></div></div>
+</div>
+
+<div class="pax">
+  <span class="t"><i class="fa-solid fa-users"></i> נוסעים</span>
+  <span class="step"><button id="minus"><i class="fa-solid fa-minus"></i></button><b id="adults">1</b><button id="plus"><i class="fa-solid fa-plus"></i></button></span>
+</div>
+
+<div class="bags">
+  <div class="chip" id="bagCarry"><i class="fa-solid fa-suitcase-rolling"></i> טרולי</div>
+  <div class="chip" id="bagChecked"><i class="fa-solid fa-suitcase"></i> מזוודה</div>
+</div>
+
+<button id="go"><i class="fa-solid fa-magnifying-glass"></i> חפש באתרים אחרים</button>
 <div id="cur" class="cur" hidden></div>
 <div id="results"></div>
 <div id="status"></div>
