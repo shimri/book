@@ -1,0 +1,176 @@
+{
+ "extName": {
+  "message": "Günstige Flüge – Preisvergleich"
+ },
+ "extDesc": {
+  "message": "Liest Ihre Flugsuche und zeigt Konkurrenzpreise anderer Seiten."
+ },
+ "actionTitle": {
+  "message": "Flugpreise vergleichen"
+ },
+ "appTitle": {
+  "message": "Günstige Flüge"
+ },
+ "appSub": {
+  "message": "Vergleicht Preise auf anderen Seiten, während Sie suchen"
+ },
+ "roundTrip": {
+  "message": "Hin und zurück"
+ },
+ "oneWay": {
+  "message": "Einfach"
+ },
+ "from": {
+  "message": "Von"
+ },
+ "to": {
+  "message": "Nach"
+ },
+ "swap": {
+  "message": "Tauschen"
+ },
+ "depart": {
+  "message": "Hinflug"
+ },
+ "ret": {
+  "message": "Rückflug"
+ },
+ "passengers": {
+  "message": "Passagiere"
+ },
+ "carryOn": {
+  "message": "Handgepäck"
+ },
+ "checkedBag": {
+  "message": "Aufgabegepäck"
+ },
+ "searchOthers": {
+  "message": "Andere Seiten durchsuchen"
+ },
+ "checking": {
+  "message": "Prüfe…"
+ },
+ "resetSearch": {
+  "message": "Suche zurücksetzen"
+ },
+ "pagePrice": {
+  "message": "Günstigster Preis auf dieser Seite: $P1$ (meist einfache Strecke)",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "statusRead": {
+  "message": "Daten von der Seite gelesen – Sie können sie ändern."
+ },
+ "statusNotFound": {
+  "message": "Keine Suche auf der Seite gefunden – manuell ausfüllen."
+ },
+ "statusCantRead": {
+  "message": "Seite nicht lesbar – manuell ausfüllen."
+ },
+ "statusMissing": {
+  "message": "Code für Abflug/Ziel (3 Buchstaben) oder Hinflugdatum fehlt."
+ },
+ "statusRunning": {
+  "message": "Prüfe Seiten im Hintergrund, bis zu 30 Sekunden…"
+ },
+ "statusReset": {
+  "message": "Zurückgesetzt. Lese die Seite erneut…"
+ },
+ "cheapestSummary": {
+  "message": "Am günstigsten: $P1$ · $P2$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   },
+   "p2": {
+    "content": "$2"
+   }
+  }
+ },
+ "stillChecking": {
+  "message": " (prüfe noch…)"
+ },
+ "checkingN": {
+  "message": "Prüfe $P1$ Seiten im Hintergrund…",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "noPrices": {
+  "message": "Keine Preise gefunden. Klicken Sie auf eine Seite, um sie zu öffnen."
+ },
+ "loadingRes": {
+  "message": "Lade Ergebnisse…"
+ },
+ "failRes": {
+  "message": "Kein Preis gefunden · zum Öffnen klicken"
+ },
+ "foundPrice": {
+  "message": "Preis gefunden"
+ },
+ "cheapestBadge": {
+  "message": "Am günstigsten"
+ },
+ "cheaperBy": {
+  "message": "$P1$ günstiger als Ihre Seite",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "pricierBy": {
+  "message": "$P1$ teurer als Ihre Seite",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "samePrice": {
+  "message": "Gleicher Preis wie Ihre Seite"
+ },
+ "infoTitle": {
+  "message": "Woher stammt dieser Preis?"
+ },
+ "showOnPage": {
+  "message": "Diesen Preis auf der Seite zeigen"
+ },
+ "highlightLabel": {
+  "message": "Von der Erweiterung gelesener Preis: $P1$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "notOnPage": {
+  "message": "Preis auf der Seite nicht gefunden."
+ },
+ "sources": {
+  "message": "Quellen"
+ },
+ "noSources": {
+  "message": "Wählen Sie mindestens eine Quelle."
+ },
+ "bagIncl": {
+  "message": "Inklusive"
+ },
+ "bagNot": {
+  "message": "Nicht inklusive"
+ },
+ "bagUnk": {
+  "message": "Unbekannt"
+ },
+ "warnChecked": {
+  "message": "Kein Aufgabegepäck bei diesem Preis"
+ },
+ "warnCarry": {
+  "message": "Kein Handgepäck bei diesem Preis"
+ }
+}

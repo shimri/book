@@ -1,0 +1,176 @@
+{
+ "extName": {
+  "message": "Cheap Flights – Price Compare"
+ },
+ "extDesc": {
+  "message": "Reads your flight search and shows competing prices from other sites."
+ },
+ "actionTitle": {
+  "message": "Compare flight prices"
+ },
+ "appTitle": {
+  "message": "Cheap Flights"
+ },
+ "appSub": {
+  "message": "Compares prices on other sites while you search"
+ },
+ "roundTrip": {
+  "message": "Round trip"
+ },
+ "oneWay": {
+  "message": "One way"
+ },
+ "from": {
+  "message": "From"
+ },
+ "to": {
+  "message": "To"
+ },
+ "swap": {
+  "message": "Swap"
+ },
+ "depart": {
+  "message": "Depart"
+ },
+ "ret": {
+  "message": "Return"
+ },
+ "passengers": {
+  "message": "Passengers"
+ },
+ "carryOn": {
+  "message": "Carry-on"
+ },
+ "checkedBag": {
+  "message": "Checked bag"
+ },
+ "searchOthers": {
+  "message": "Search other sites"
+ },
+ "checking": {
+  "message": "Checking…"
+ },
+ "resetSearch": {
+  "message": "Reset search"
+ },
+ "pagePrice": {
+  "message": "Cheapest price on this page: $P1$ (usually one-way)",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "statusRead": {
+  "message": "Details read from the page – you can edit them."
+ },
+ "statusNotFound": {
+  "message": "No search found on the page – fill in manually."
+ },
+ "statusCantRead": {
+  "message": "Can't read this page – fill in manually."
+ },
+ "statusMissing": {
+  "message": "Missing origin/destination code (3 letters) or departure date."
+ },
+ "statusRunning": {
+  "message": "Checking sites in the background, up to 30 seconds…"
+ },
+ "statusReset": {
+  "message": "Reset. Reading the page again…"
+ },
+ "cheapestSummary": {
+  "message": "Cheapest: $P1$ · $P2$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   },
+   "p2": {
+    "content": "$2"
+   }
+  }
+ },
+ "stillChecking": {
+  "message": " (still checking…)"
+ },
+ "checkingN": {
+  "message": "Checking $P1$ sites in the background…",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "noPrices": {
+  "message": "No prices found. Click a site to open it."
+ },
+ "loadingRes": {
+  "message": "Loading results…"
+ },
+ "failRes": {
+  "message": "No price found · click to open"
+ },
+ "foundPrice": {
+  "message": "Price found"
+ },
+ "cheapestBadge": {
+  "message": "Cheapest"
+ },
+ "cheaperBy": {
+  "message": "$P1$ cheaper than your page",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "pricierBy": {
+  "message": "$P1$ more than your page",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "samePrice": {
+  "message": "Same price as your page"
+ },
+ "infoTitle": {
+  "message": "Where was this price read from?"
+ },
+ "showOnPage": {
+  "message": "Show this price on the page"
+ },
+ "highlightLabel": {
+  "message": "Price read by the extension: $P1$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "notOnPage": {
+  "message": "Couldn't find this price on the page."
+ },
+ "sources": {
+  "message": "Sources"
+ },
+ "noSources": {
+  "message": "Select at least one source."
+ },
+ "bagIncl": {
+  "message": "Included"
+ },
+ "bagNot": {
+  "message": "Not included"
+ },
+ "bagUnk": {
+  "message": "Couldn't tell"
+ },
+ "warnChecked": {
+  "message": "No checked bag at this price"
+ },
+ "warnCarry": {
+  "message": "No carry-on at this price"
+ }
+}

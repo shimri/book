@@ -1,0 +1,176 @@
+{
+ "extName": {
+  "message": "Дешёвые перелёты – сравнение цен"
+ },
+ "extDesc": {
+  "message": "Считывает ваш поиск рейсов и показывает цены с других сайтов."
+ },
+ "actionTitle": {
+  "message": "Сравнить цены на рейсы"
+ },
+ "appTitle": {
+  "message": "Дешёвые перелёты"
+ },
+ "appSub": {
+  "message": "Сравнивает цены на других сайтах, пока вы ищете"
+ },
+ "roundTrip": {
+  "message": "Туда и обратно"
+ },
+ "oneWay": {
+  "message": "В одну сторону"
+ },
+ "from": {
+  "message": "Откуда"
+ },
+ "to": {
+  "message": "Куда"
+ },
+ "swap": {
+  "message": "Поменять"
+ },
+ "depart": {
+  "message": "Вылет"
+ },
+ "ret": {
+  "message": "Обратно"
+ },
+ "passengers": {
+  "message": "Пассажиры"
+ },
+ "carryOn": {
+  "message": "Ручная кладь"
+ },
+ "checkedBag": {
+  "message": "Багаж"
+ },
+ "searchOthers": {
+  "message": "Искать на других сайтах"
+ },
+ "checking": {
+  "message": "Проверяю…"
+ },
+ "resetSearch": {
+  "message": "Сбросить поиск"
+ },
+ "pagePrice": {
+  "message": "Самая низкая цена на этой странице: $P1$ (обычно в одну сторону)",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "statusRead": {
+  "message": "Данные считаны со страницы – их можно изменить."
+ },
+ "statusNotFound": {
+  "message": "Поиск на странице не найден – заполните вручную."
+ },
+ "statusCantRead": {
+  "message": "Не удалось прочитать страницу – заполните вручную."
+ },
+ "statusMissing": {
+  "message": "Не указан код вылета/прилёта (3 буквы) или дата вылета."
+ },
+ "statusRunning": {
+  "message": "Проверяю сайты в фоне, до 30 секунд…"
+ },
+ "statusReset": {
+  "message": "Сброшено. Снова читаю страницу…"
+ },
+ "cheapestSummary": {
+  "message": "Дешевле всего: $P1$ · $P2$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   },
+   "p2": {
+    "content": "$2"
+   }
+  }
+ },
+ "stillChecking": {
+  "message": " (ещё проверяю…)"
+ },
+ "checkingN": {
+  "message": "Проверяю сайтов в фоне: $P1$…",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "noPrices": {
+  "message": "Цены не найдены. Нажмите на сайт, чтобы открыть его."
+ },
+ "loadingRes": {
+  "message": "Загрузка результатов…"
+ },
+ "failRes": {
+  "message": "Цена не найдена · нажмите, чтобы открыть"
+ },
+ "foundPrice": {
+  "message": "Цена найдена"
+ },
+ "cheapestBadge": {
+  "message": "Дешевле всего"
+ },
+ "cheaperBy": {
+  "message": "Дешевле на $P1$, чем на вашей странице",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "pricierBy": {
+  "message": "Дороже на $P1$, чем на вашей странице",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "samePrice": {
+  "message": "Такая же цена, как на вашей странице"
+ },
+ "infoTitle": {
+  "message": "Откуда взята эта цена?"
+ },
+ "showOnPage": {
+  "message": "Показать эту цену на странице"
+ },
+ "highlightLabel": {
+  "message": "Цена, считанная расширением: $P1$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "notOnPage": {
+  "message": "Не удалось найти эту цену на странице."
+ },
+ "sources": {
+  "message": "Источники"
+ },
+ "noSources": {
+  "message": "Выберите хотя бы один источник."
+ },
+ "bagIncl": {
+  "message": "Включено"
+ },
+ "bagNot": {
+  "message": "Не включено"
+ },
+ "bagUnk": {
+  "message": "Неизвестно"
+ },
+ "warnChecked": {
+  "message": "В этой цене нет багажа"
+ },
+ "warnCarry": {
+  "message": "В этой цене нет ручной клади"
+ }
+}

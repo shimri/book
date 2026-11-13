@@ -1,0 +1,176 @@
+{
+ "extName": {
+  "message": "Vuelos baratos – comparador de precios"
+ },
+ "extDesc": {
+  "message": "Lee tu búsqueda de vuelos y muestra precios de la competencia en otros sitios."
+ },
+ "actionTitle": {
+  "message": "Comparar precios de vuelos"
+ },
+ "appTitle": {
+  "message": "Vuelos baratos"
+ },
+ "appSub": {
+  "message": "Compara precios en otros sitios mientras buscas"
+ },
+ "roundTrip": {
+  "message": "Ida y vuelta"
+ },
+ "oneWay": {
+  "message": "Solo ida"
+ },
+ "from": {
+  "message": "Origen"
+ },
+ "to": {
+  "message": "Destino"
+ },
+ "swap": {
+  "message": "Intercambiar"
+ },
+ "depart": {
+  "message": "Salida"
+ },
+ "ret": {
+  "message": "Vuelta"
+ },
+ "passengers": {
+  "message": "Pasajeros"
+ },
+ "carryOn": {
+  "message": "Equipaje de mano"
+ },
+ "checkedBag": {
+  "message": "Maleta facturada"
+ },
+ "searchOthers": {
+  "message": "Buscar en otros sitios"
+ },
+ "checking": {
+  "message": "Comprobando…"
+ },
+ "resetSearch": {
+  "message": "Restablecer búsqueda"
+ },
+ "pagePrice": {
+  "message": "Precio más bajo en esta página: $P1$ (normalmente solo ida)",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "statusRead": {
+  "message": "Datos leídos de la página: puedes editarlos."
+ },
+ "statusNotFound": {
+  "message": "No se encontró una búsqueda en la página: rellena manualmente."
+ },
+ "statusCantRead": {
+  "message": "No se puede leer esta página: rellena manualmente."
+ },
+ "statusMissing": {
+  "message": "Falta el código de origen/destino (3 letras) o la fecha de salida."
+ },
+ "statusRunning": {
+  "message": "Comprobando sitios en segundo plano, hasta 30 segundos…"
+ },
+ "statusReset": {
+  "message": "Restablecido. Leyendo la página otra vez…"
+ },
+ "cheapestSummary": {
+  "message": "Más barato: $P1$ · $P2$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   },
+   "p2": {
+    "content": "$2"
+   }
+  }
+ },
+ "stillChecking": {
+  "message": " (aún comprobando…)"
+ },
+ "checkingN": {
+  "message": "Comprobando $P1$ sitios en segundo plano…",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "noPrices": {
+  "message": "No se encontraron precios. Haz clic en un sitio para abrirlo."
+ },
+ "loadingRes": {
+  "message": "Cargando resultados…"
+ },
+ "failRes": {
+  "message": "Sin precio · haz clic para abrir"
+ },
+ "foundPrice": {
+  "message": "Precio encontrado"
+ },
+ "cheapestBadge": {
+  "message": "Más barato"
+ },
+ "cheaperBy": {
+  "message": "$P1$ más barato que tu página",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "pricierBy": {
+  "message": "$P1$ más caro que tu página",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "samePrice": {
+  "message": "Mismo precio que tu página"
+ },
+ "infoTitle": {
+  "message": "¿De dónde se leyó este precio?"
+ },
+ "showOnPage": {
+  "message": "Mostrar este precio en la página"
+ },
+ "highlightLabel": {
+  "message": "Precio leído por la extensión: $P1$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "notOnPage": {
+  "message": "No se encontró este precio en la página."
+ },
+ "sources": {
+  "message": "Fuentes"
+ },
+ "noSources": {
+  "message": "Selecciona al menos una fuente."
+ },
+ "bagIncl": {
+  "message": "Incluido"
+ },
+ "bagNot": {
+  "message": "No incluido"
+ },
+ "bagUnk": {
+  "message": "No se sabe"
+ },
+ "warnChecked": {
+  "message": "Sin maleta facturada a este precio"
+ },
+ "warnCarry": {
+  "message": "Sin equipaje de mano a este precio"
+ }
+}
