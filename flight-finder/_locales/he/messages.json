@@ -1,0 +1,141 @@
+{
+ "extName": {
+  "message": "טיסות זולות – השוואת מחירים"
+ },
+ "extDesc": {
+  "message": "קורא את חיפוש הטיסה שלך ומציג מחירים מתחרים מאתרים אחרים."
+ },
+ "actionTitle": {
+  "message": "השוואת מחירי טיסות"
+ },
+ "appTitle": {
+  "message": "טיסות זולות"
+ },
+ "appSub": {
+  "message": "משווה מחירים באתרים אחרים בזמן שאתם מחפשים"
+ },
+ "roundTrip": {
+  "message": "הלוך-חזור"
+ },
+ "oneWay": {
+  "message": "כיוון אחד"
+ },
+ "from": {
+  "message": "מוצא"
+ },
+ "to": {
+  "message": "יעד"
+ },
+ "swap": {
+  "message": "החלף"
+ },
+ "depart": {
+  "message": "הלוך"
+ },
+ "ret": {
+  "message": "חזור"
+ },
+ "passengers": {
+  "message": "נוסעים"
+ },
+ "carryOn": {
+  "message": "טרולי"
+ },
+ "checkedBag": {
+  "message": "מזוודה"
+ },
+ "searchOthers": {
+  "message": "חפש באתרים אחרים"
+ },
+ "checking": {
+  "message": "בודק…"
+ },
+ "resetSearch": {
+  "message": "אפס חיפוש"
+ },
+ "pagePrice": {
+  "message": "המחיר הזול בעמוד הנוכחי: $P1$ (לרוב לכיוון אחד)",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "statusRead": {
+  "message": "הנתונים נקראו מהעמוד, אפשר לתקן."
+ },
+ "statusNotFound": {
+  "message": "לא זוהה חיפוש בעמוד, מלאו ידנית."
+ },
+ "statusCantRead": {
+  "message": "לא ניתן לקרוא את העמוד, מלאו ידנית."
+ },
+ "statusMissing": {
+  "message": "חסר קוד מוצא/יעד (3 אותיות) או תאריך הלוך."
+ },
+ "statusRunning": {
+  "message": "בודק אתרים ברקע, זה לוקח עד חצי דקה…"
+ },
+ "statusReset": {
+  "message": "אופס. קורא את העמוד מחדש…"
+ },
+ "cheapestSummary": {
+  "message": "הזול ביותר: $P1$ · $P2$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   },
+   "p2": {
+    "content": "$2"
+   }
+  }
+ },
+ "stillChecking": {
+  "message": " (עדיין בודק…)"
+ },
+ "checkingN": {
+  "message": "בודק $P1$ אתרים ברקע…",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "noPrices": {
+  "message": "לא נמצאו מחירים. לחצו על אתר כדי לפתוח אותו."
+ },
+ "loadingRes": {
+  "message": "טוען תוצאות…"
+ },
+ "failRes": {
+  "message": "לא נמצא מחיר · לחצו לפתיחה"
+ },
+ "foundPrice": {
+  "message": "נמצא מחיר"
+ },
+ "cheapestBadge": {
+  "message": "הזול ביותר"
+ },
+ "cheaperBy": {
+  "message": "זול ב-$P1$ מהעמוד שלכם",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "pricierBy": {
+  "message": "יקר ב-$P1$ מהעמוד שלכם",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "samePrice": {
+  "message": "אותו מחיר כמו בעמוד שלכם"
+ },
+ "infoTitle": {
+  "message": "מאיפה נלקח המחיר?"
+ }
+}

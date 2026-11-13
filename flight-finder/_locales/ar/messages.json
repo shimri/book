@@ -1,0 +1,141 @@
+{
+ "extName": {
+  "message": "رحلات رخيصة – مقارنة الأسعار"
+ },
+ "extDesc": {
+  "message": "يقرأ بحث رحلتك ويعرض أسعارًا منافسة من مواقع أخرى."
+ },
+ "actionTitle": {
+  "message": "مقارنة أسعار الرحلات"
+ },
+ "appTitle": {
+  "message": "رحلات رخيصة"
+ },
+ "appSub": {
+  "message": "يقارن الأسعار في مواقع أخرى أثناء بحثك"
+ },
+ "roundTrip": {
+  "message": "ذهاب وعودة"
+ },
+ "oneWay": {
+  "message": "ذهاب فقط"
+ },
+ "from": {
+  "message": "من"
+ },
+ "to": {
+  "message": "إلى"
+ },
+ "swap": {
+  "message": "تبديل"
+ },
+ "depart": {
+  "message": "المغادرة"
+ },
+ "ret": {
+  "message": "العودة"
+ },
+ "passengers": {
+  "message": "الركاب"
+ },
+ "carryOn": {
+  "message": "حقيبة يد"
+ },
+ "checkedBag": {
+  "message": "حقيبة مسجّلة"
+ },
+ "searchOthers": {
+  "message": "ابحث في مواقع أخرى"
+ },
+ "checking": {
+  "message": "جارٍ الفحص…"
+ },
+ "resetSearch": {
+  "message": "إعادة تعيين البحث"
+ },
+ "pagePrice": {
+  "message": "أرخص سعر في هذه الصفحة: $P1$ (غالبًا لاتجاه واحد)",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "statusRead": {
+  "message": "تمت قراءة البيانات من الصفحة – يمكنك تعديلها."
+ },
+ "statusNotFound": {
+  "message": "لم يتم العثور على بحث في الصفحة – املأ يدويًا."
+ },
+ "statusCantRead": {
+  "message": "تعذّرت قراءة هذه الصفحة – املأ يدويًا."
+ },
+ "statusMissing": {
+  "message": "رمز المغادرة/الوجهة (3 أحرف) أو تاريخ المغادرة مفقود."
+ },
+ "statusRunning": {
+  "message": "يتم فحص المواقع في الخلفية، حتى 30 ثانية…"
+ },
+ "statusReset": {
+  "message": "تمت إعادة التعيين. إعادة قراءة الصفحة…"
+ },
+ "cheapestSummary": {
+  "message": "الأرخص: $P1$ · $P2$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   },
+   "p2": {
+    "content": "$2"
+   }
+  }
+ },
+ "stillChecking": {
+  "message": " (لا يزال الفحص جاريًا…)"
+ },
+ "checkingN": {
+  "message": "فحص $P1$ مواقع في الخلفية…",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "noPrices": {
+  "message": "لم يتم العثور على أسعار. انقر على موقع لفتحه."
+ },
+ "loadingRes": {
+  "message": "جارٍ تحميل النتائج…"
+ },
+ "failRes": {
+  "message": "لم يُعثر على سعر · انقر للفتح"
+ },
+ "foundPrice": {
+  "message": "تم العثور على سعر"
+ },
+ "cheapestBadge": {
+  "message": "الأرخص"
+ },
+ "cheaperBy": {
+  "message": "أرخص بـ $P1$ من صفحتك",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "pricierBy": {
+  "message": "أغلى بـ $P1$ من صفحتك",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "samePrice": {
+  "message": "نفس سعر صفحتك"
+ },
+ "infoTitle": {
+  "message": "من أين قُرئ هذا السعر؟"
+ }
+}

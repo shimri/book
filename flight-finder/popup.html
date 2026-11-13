@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="vendor/fa/css/fontawesome.min.css">
@@ -65,34 +65,34 @@
 <body>
 <header>
   <img src="icons/icon48.png" alt="">
-  <div><h1>טיסות זולות</h1><p>משווה מחירים באתרים אחרים בזמן שאתם מחפשים</p></div>
+  <div><h1 data-i18n="appTitle"></h1><p data-i18n="appSub"></p></div>
 </header>
 <main>
   <section class="card">
     <div class="seg" id="trip">
-      <button data-t="round" class="on"><i class="fa-solid fa-arrow-right-arrow-left"></i> הלוך-חזור</button>
-      <button data-t="one"><i class="fa-solid fa-arrow-right"></i> כיוון אחד</button>
+      <button data-t="round" class="on"><i class="fa-solid fa-arrow-right-arrow-left"></i> <span data-i18n="roundTrip"></span></button>
+      <button data-t="one"><i class="fa-solid fa-arrow-right"></i> <span data-i18n="oneWay"></span></button>
     </div>
     <div class="route">
-      <div class="f"><label class="l">מוצא</label><div class="in"><i class="fa-solid fa-plane-departure"></i><input id="from" class="code" maxlength="3" placeholder="TLV"></div></div>
-      <button class="swap" id="swap" title="החלף"><i class="fa-solid fa-right-left"></i></button>
-      <div class="f"><label class="l">יעד</label><div class="in"><i class="fa-solid fa-plane-arrival"></i><input id="to" class="code" maxlength="3" placeholder="CDG"></div></div>
+      <div class="f"><label class="l" data-i18n="from"></label><div class="in"><i class="fa-solid fa-plane-departure"></i><input id="from" class="code" maxlength="3" placeholder="TLV"></div></div>
+      <button class="swap" id="swap" data-i18n-title="swap"><i class="fa-solid fa-right-left"></i></button>
+      <div class="f"><label class="l" data-i18n="to"></label><div class="in"><i class="fa-solid fa-plane-arrival"></i><input id="to" class="code" maxlength="3" placeholder="CDG"></div></div>
     </div>
     <div class="row" id="dates">
-      <div><label class="l">הלוך</label><div class="in"><input id="dep" type="date"></div></div>
-      <div><label class="l">חזור</label><div class="in"><input id="ret" type="date"></div></div>
+      <div><label class="l" data-i18n="depart"></label><div class="in"><input id="dep" type="date"></div></div>
+      <div><label class="l" data-i18n="ret"></label><div class="in"><input id="ret" type="date"></div></div>
     </div>
     <div class="pax">
-      <span class="t"><i class="fa-solid fa-users"></i> נוסעים</span>
+      <span class="t"><i class="fa-solid fa-users"></i> <span data-i18n="passengers"></span></span>
       <span class="step"><button id="minus"><i class="fa-solid fa-minus"></i></button><b id="adults">1</b><button id="plus"><i class="fa-solid fa-plus"></i></button></span>
     </div>
     <div class="bags">
-      <div class="chip" id="bagCarry"><i class="fa-solid fa-suitcase-rolling"></i> טרולי</div>
-      <div class="chip" id="bagChecked"><i class="fa-solid fa-suitcase"></i> מזוודה</div>
+      <div class="chip" id="bagCarry"><i class="fa-solid fa-suitcase-rolling"></i> <span data-i18n="carryOn"></span></div>
+      <div class="chip" id="bagChecked"><i class="fa-solid fa-suitcase"></i> <span data-i18n="checkedBag"></span></div>
     </div>
     <div class="actions">
-      <button id="go"><i class="fa-solid fa-magnifying-glass"></i> <span>חפש באתרים אחרים</span></button>
-      <button id="reset" title="אפס חיפוש"><i class="fa-solid fa-rotate-left"></i></button>
+      <button id="go"><i class="fa-solid fa-magnifying-glass"></i> <span data-i18n="searchOthers"></span></button>
+      <button id="reset" data-i18n-title="resetSearch"><i class="fa-solid fa-rotate-left"></i></button>
     </div>
   </section>
   <div id="cur" class="note" hidden></div>

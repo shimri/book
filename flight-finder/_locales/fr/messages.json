@@ -1,0 +1,141 @@
+{
+ "extName": {
+  "message": "Vols pas chers – comparateur de prix"
+ },
+ "extDesc": {
+  "message": "Lit votre recherche de vol et affiche les prix concurrents d'autres sites."
+ },
+ "actionTitle": {
+  "message": "Comparer les prix des vols"
+ },
+ "appTitle": {
+  "message": "Vols pas chers"
+ },
+ "appSub": {
+  "message": "Compare les prix d'autres sites pendant votre recherche"
+ },
+ "roundTrip": {
+  "message": "Aller-retour"
+ },
+ "oneWay": {
+  "message": "Aller simple"
+ },
+ "from": {
+  "message": "Départ"
+ },
+ "to": {
+  "message": "Arrivée"
+ },
+ "swap": {
+  "message": "Inverser"
+ },
+ "depart": {
+  "message": "Aller"
+ },
+ "ret": {
+  "message": "Retour"
+ },
+ "passengers": {
+  "message": "Passagers"
+ },
+ "carryOn": {
+  "message": "Bagage cabine"
+ },
+ "checkedBag": {
+  "message": "Bagage en soute"
+ },
+ "searchOthers": {
+  "message": "Chercher sur d'autres sites"
+ },
+ "checking": {
+  "message": "Vérification…"
+ },
+ "resetSearch": {
+  "message": "Réinitialiser la recherche"
+ },
+ "pagePrice": {
+  "message": "Prix le plus bas sur cette page : $P1$ (généralement aller simple)",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "statusRead": {
+  "message": "Données lues sur la page – vous pouvez les modifier."
+ },
+ "statusNotFound": {
+  "message": "Aucune recherche trouvée sur la page – remplissez manuellement."
+ },
+ "statusCantRead": {
+  "message": "Impossible de lire cette page – remplissez manuellement."
+ },
+ "statusMissing": {
+  "message": "Code de départ/arrivée (3 lettres) ou date de départ manquant."
+ },
+ "statusRunning": {
+  "message": "Vérification des sites en arrière-plan, jusqu'à 30 secondes…"
+ },
+ "statusReset": {
+  "message": "Réinitialisé. Nouvelle lecture de la page…"
+ },
+ "cheapestSummary": {
+  "message": "Le moins cher : $P1$ · $P2$",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   },
+   "p2": {
+    "content": "$2"
+   }
+  }
+ },
+ "stillChecking": {
+  "message": " (vérification en cours…)"
+ },
+ "checkingN": {
+  "message": "Vérification de $P1$ sites en arrière-plan…",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "noPrices": {
+  "message": "Aucun prix trouvé. Cliquez sur un site pour l'ouvrir."
+ },
+ "loadingRes": {
+  "message": "Chargement des résultats…"
+ },
+ "failRes": {
+  "message": "Aucun prix · cliquez pour ouvrir"
+ },
+ "foundPrice": {
+  "message": "Prix trouvé"
+ },
+ "cheapestBadge": {
+  "message": "Le moins cher"
+ },
+ "cheaperBy": {
+  "message": "$P1$ de moins que votre page",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "pricierBy": {
+  "message": "$P1$ de plus que votre page",
+  "placeholders": {
+   "p1": {
+    "content": "$1"
+   }
+  }
+ },
+ "samePrice": {
+  "message": "Même prix que votre page"
+ },
+ "infoTitle": {
+  "message": "D'où vient ce prix ?"
+ }
+}

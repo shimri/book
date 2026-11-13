@@ -1,4 +1,11 @@
 const $ = (id) => document.getElementById(id);
+// i18n: strings come from _locales/<lang>/messages.json, chosen by Chrome from the browser language.
+const t = (key, ...args) => chrome.i18n.getMessage(key, args.map(String)) || key;
+const UI_LANG = chrome.i18n.getUILanguage();
+document.documentElement.lang = UI_LANG;
+document.documentElement.dir = chrome.i18n.getMessage("@@bidi_dir") || "ltr";
+document.querySelectorAll("[data-i18n]").forEach((e) => (e.textContent = t(e.dataset.i18n)));
+document.querySelectorAll("[data-i18n-title]").forEach((e) => (e.title = t(e.dataset.i18nTitle)));
 let curPrice = null, curCur = null;
 const state = { trip: "round", adults: 1, carry: false, checked: false };
 const saveUI = () => chrome.storage.local.set({ ui: state });
@@ -22,7 +29,7 @@ function scrapePage() {
   return { url: decodeURIComponent(location.href), fields, text: document.body.innerText.slice(0, 8000) };
 }
 
-const money = (n, cur) => new Intl.NumberFormat("en-US", { style: "currency", currency: cur || "ILS", maximumFractionDigits: 0 }).format(n);
+const money = (n, cur) => new Intl.NumberFormat(UI_LANG, { style: "currency", currency: cur || "ILS", maximumFractionDigits: 0 }).format(n);
 
 async function init() {
   const saved = await chrome.storage.local.get(["from", "ui"]);
@@ -41,11 +48,11 @@ async function init() {
     if (pr && pr.min) {
       curPrice = pr.min; curCur = pr.currency;
       $("cur").hidden = false;
-      $("cur").innerHTML = `<i class="fa-solid fa-tag"></i> המחיר הזול בעמוד הנוכחי: <b>${money(pr.min, pr.currency)}</b> (לרוב לכיוון אחד)`;
+      $("cur").innerHTML = `<i class="fa-solid fa-tag"></i> <span>${t("pagePrice", "<b>" + money(pr.min, pr.currency) + "</b>")}</span>`;
     }
-    $("status").textContent = p.dep || p.to ? "הנתונים נקראו מהעמוד, אפשר לתקן." : "לא זוהה חיפוש בעמוד, מלאו ידנית.";
+    $("status").textContent = p.dep || p.to ? t("statusRead") : t("statusNotFound");
   } catch {
-    $("status").textContent = "לא ניתן לקרוא את העמוד, מלאו ידנית.";
+    $("status").textContent = t("statusCantRead");
   }
   // Re-render now that the page price/currency are known (needed for the per-row comparison).
   chrome.storage.session.get("results").then((s) => render(s.results));
@@ -65,17 +72,17 @@ function render(results) {
   const best = done.length ? Math.min(...done.map(([, r]) => r.price)) : null;
   $("bar").style.width = Math.round(((entries.length - pending) / entries.length) * 100) + "%";
   $("go").disabled = pending > 0;
-  $("go").querySelector("span").textContent = pending ? "בודק…" : "חפש באתרים אחרים";
+  $("go").querySelector("span").textContent = pending ? t("checking") : t("searchOthers");
 
   const sum = $("summary");
   if (best !== null) {
     const w = done.find(([, r]) => r.price === best)[1];
     sum.className = "summary";
-    sum.innerHTML = `<i class="fa-solid fa-trophy"></i><span>הזול ביותר: ${w.name} · ${money(best, w.currency)}${pending ? " (עדיין בודק…)" : ""}</span>`;
+    sum.innerHTML = `<i class="fa-solid fa-trophy"></i><span>${t("cheapestSummary", w.name, money(best, w.currency))}${pending ? t("stillChecking") : ""}</span>`;
   } else {
     sum.className = "summary wait";
-    sum.innerHTML = pending ? `<i class="fa-solid fa-spinner fa-spin"></i><span>בודק ${pending} אתרים ברקע…</span>`
-      : `<i class="fa-solid fa-triangle-exclamation"></i><span>לא נמצאו מחירים. לחצו על אתר כדי לפתוח אותו.</span>`;
+    sum.innerHTML = pending ? `<i class="fa-solid fa-spinner fa-spin"></i><span>${t("checkingN", pending)}</span>`
+      : `<i class="fa-solid fa-triangle-exclamation"></i><span>${t("noPrices")}</span>`;
   }
 
   const rank = (r) => (r.status === "done" ? r.price : r.status === "loading" ? 1e8 : 1e9);
@@ -85,17 +92,17 @@ function render(results) {
     const isBest = r.status === "done" && r.price === best && done.length > 1;
     let small = "", price = "";
     if (r.status === "loading") {
-      small = '<i class="fa-solid fa-spinner fa-spin"></i> טוען תוצאות…'; price = '<div class="skel"></div>';
+      small = '<i class="fa-solid fa-spinner fa-spin"></i> ' + t("loadingRes"); price = '<div class="skel"></div>';
     } else if (r.status === "fail") {
-      small = '<i class="fa-solid fa-triangle-exclamation"></i> לא נמצא מחיר · לחצו לפתיחה'; price = '<i class="fa-solid fa-arrow-up-right-from-square" style="color:var(--muted)"></i>';
+      small = '<i class="fa-solid fa-triangle-exclamation"></i> ' + t("failRes"); price = '<i class="fa-solid fa-arrow-up-right-from-square" style="color:var(--muted)"></i>';
     } else {
-      price = `<span class="price">${money(r.price, r.currency)}</span>` + (isBest ? '<span class="badge"><i class="fa-solid fa-star"></i> הזול ביותר</span>' : "");
-      small = '<i class="fa-solid fa-circle-check"></i> נמצא מחיר';
+      price = `<span class="price">${money(r.price, r.currency)}</span>` + (isBest ? '<span class="badge"><i class="fa-solid fa-star"></i> ' + t("cheapestBadge") + "</span>" : "");
+      small = '<i class="fa-solid fa-circle-check"></i> ' + t("foundPrice");
       if (state.trip === "one" && curPrice && r.currency === curCur) {
         const d = curPrice - r.price;
-        if (d > 0) small = `<i class="fa-solid fa-arrow-trend-down"></i> זול ב-${money(d, r.currency)} מהעמוד שלכם`;
-        else if (d < 0) small = `<i class="fa-solid fa-arrow-trend-up"></i> יקר ב-${money(-d, r.currency)} מהעמוד שלכם`;
-        else small = "אותו מחיר כמו בעמוד שלכם";
+        if (d > 0) small = `<i class="fa-solid fa-arrow-trend-down"></i> ${t("cheaperBy", money(d, r.currency))}`;
+        else if (d < 0) small = `<i class="fa-solid fa-arrow-trend-up"></i> ${t("pricierBy", money(-d, r.currency))}`;
+        else small = t("samePrice");
       }
     }
     const cls = state.trip === "one" && curPrice && r.status === "done" && r.currency === curCur ? (curPrice > r.price ? "cheaper" : curPrice < r.price ? "pricier" : "") : "";
@@ -106,7 +113,7 @@ function render(results) {
     $("results").appendChild(a);
     if (r.ctx) {
       const btn = document.createElement("button");
-      btn.className = "info"; btn.title = "מאיפה נלקח המחיר?"; btn.innerHTML = '<i class="fa-solid fa-circle-info"></i>';
+      btn.className = "info"; btn.title = t("infoTitle"); btn.innerHTML = '<i class="fa-solid fa-circle-info"></i>';
       const ctx = document.createElement("div"); ctx.className = "ctx"; ctx.textContent = r.ctx;
       btn.addEventListener("click", (e) => { e.preventDefault(); ctx.classList.toggle("show"); });
       a.querySelector(".end").append(btn);
@@ -122,11 +129,11 @@ $("go").addEventListener("click", async () => {
     adults: state.adults, cur: curCur || "ILS", carry: state.carry, checked: state.checked,
   };
   if (!/^[A-Z]{3}$/.test(v.from) || !/^[A-Z]{3}$/.test(v.to) || !v.dep) {
-    $("status").textContent = "חסר קוד מוצא/יעד (3 אותיות) או תאריך הלוך.";
+    $("status").textContent = t("statusMissing");
     return;
   }
   await chrome.storage.local.set({ from: v.from });
-  $("status").textContent = "בודק אתרים ברקע, זה לוקח עד חצי דקה…";
+  $("status").textContent = t("statusRunning");
   chrome.runtime.sendMessage({ type: "compare", params: v });
 });
 
@@ -136,11 +143,11 @@ $("reset").addEventListener("click", () => {
   $("results").innerHTML = "";
   $("res").classList.remove("show");
   $("go").disabled = false;
-  $("go").querySelector("span").textContent = "חפש באתרים אחרים";
+  $("go").querySelector("span").textContent = t("searchOthers");
   $("cur").hidden = true;
   Object.assign(state, { trip: "round", adults: 1, carry: false, checked: false });
   paintUI(); saveUI();
-  $("status").textContent = "אופס. קורא את העמוד מחדש…";
+  $("status").textContent = t("statusReset");
   init();
 });
 
