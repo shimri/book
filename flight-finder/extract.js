@@ -23,7 +23,7 @@ function extractPrices(wanted) {
   const add = (c, s, m) => {
     const cur = code(c), n = parseInt(s.replace(/,/g, ""), 10);
     if (!cur) return;
-    const near = text.slice(Math.max(0, m.index - 70), m.index + m[0].length + 70);
+    const near = text.slice(Math.max(0, m.index - 40), m.index + m[0].length + 40);
     if (BAD.test(near)) return;
     const good = GOOD.test(text.slice(Math.max(0, m.index - 120), m.index + m[0].length + 120));
     const [lo, hi] = cur === "ILS" ? [150, 40000] : [40, 15000];
