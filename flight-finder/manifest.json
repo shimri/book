@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "טיסות זולות - השוואת מחירים",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "קורא את החיפוש שלך באתר חברת תעופה ומציג מחירים מתחרים מאתרי השוואה.",
   "permissions": ["activeTab", "scripting", "storage"],
   "host_permissions": [

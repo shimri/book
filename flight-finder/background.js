@@ -48,6 +48,12 @@ async function scrapeSite(site, params, myRun) {
 }
 
 chrome.runtime.onMessage.addListener((msg) => {
+  if (msg.type === "reset") {
+    runId++; // running scrapes notice this, stop, and close their tabs
+    results = {};
+    chrome.storage.session.set({ results });
+    return;
+  }
   if (msg.type !== "compare") return;
   const myRun = ++runId;
   results = {};

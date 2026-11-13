@@ -80,6 +80,17 @@ $("go").addEventListener("click", async () => {
   chrome.runtime.sendMessage({ type: "compare", params: v });
 });
 
+$("reset").addEventListener("click", () => {
+  chrome.runtime.sendMessage({ type: "reset" });
+  ["dep", "ret", "to"].forEach((id) => ($(id).value = ""));
+  $("results").innerHTML = "";
+  $("cur").hidden = true;
+  Object.assign(state, { trip: "round", adults: 1, carry: false, checked: false });
+  paintUI(); saveUI();
+  $("status").textContent = "אופס. קורא את העמוד מחדש…";
+  init();
+});
+
 chrome.storage.onChanged.addListener((c, area) => {
   if (area === "session" && c.results) render(c.results.newValue);
 });
