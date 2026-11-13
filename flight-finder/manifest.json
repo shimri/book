@@ -1,8 +1,15 @@
 {
   "manifest_version": 3,
   "name": "טיסות זולות - השוואת מחירים",
-  "version": "0.1.0",
-  "description": "קורא את החיפוש שלך באתר חברת תעופה ופותח את אותו חיפוש באתרי השוואה.",
+  "version": "0.2.0",
+  "description": "קורא את החיפוש שלך באתר חברת תעופה ומציג מחירים מתחרים מאתרי השוואה.",
   "permissions": ["activeTab", "scripting", "storage"],
-  "action": { "default_popup": "popup.html", "default_title": "חפש טיסות זולות יותר" }
+  "host_permissions": [
+    "https://www.google.com/travel/flights*",
+    "https://www.skyscanner.co.il/*",
+    "https://www.kayak.com/*",
+    "https://www.momondo.com/*"
+  ],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "השוואת מחירי טיסות" }
 }

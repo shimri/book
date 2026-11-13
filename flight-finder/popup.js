@@ -40,22 +40,30 @@ async function init() {
     if (dates[1]) $("ret").value = dates[1];
     if (codes[0]) $("from").value = codes[0];
     if (codes[1]) $("to").value = codes[1];
+    const [{ result: pr }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: extractPrices });
+    if (pr && pr.min) { curPrice = pr.min; $("cur").hidden = false; $("cur").textContent = "מחיר בעמוד הנוכחי (הערכה): " + fmt(pr.min); }
     $("status").textContent = dates.length || codes.length ? "הנתונים נקראו מהעמוד, אפשר לתקן." : "לא זוהה חיפוש בעמוד, מלאו ידנית.";
   } catch {
     $("status").textContent = "לא ניתן לקרוא את העמוד, מלאו ידנית.";
   }
 }
 
-const yymmdd = (d) => d.slice(2).replace(/-/g, "");
+const fmt = (n) => "₪" + n.toLocaleString("he-IL");
+let curPrice = null;
 
-function links({ from, to, dep, ret, adults }) {
-  const q = encodeURIComponent(`Flights from ${from} to ${to} on ${dep}${ret ? " through " + ret : ""}`);
-  return [
-    `https://www.google.com/travel/flights?q=${q}&curr=ILS`,
-    `https://www.skyscanner.co.il/transport/flights/${from}/${to}/${yymmdd(dep)}/${ret ? yymmdd(ret) + "/" : ""}?adultsv2=${adults}&currency=ILS`,
-    `https://www.kayak.com/flights/${from}-${to}/${dep}${ret ? "/" + ret : ""}/${adults}adults?currency=ILS`,
-    `https://www.momondo.com/flight-search/${from}-${to}/${dep}${ret ? "/" + ret : ""}/${adults}adults?currency=ILS`,
-  ];
+function render(results) {
+  const rows = Object.values(results || {});
+  const prices = rows.filter((r) => r.status === "done").map((r) => r.price);
+  const best = prices.length ? Math.min(...prices) : null;
+  $("results").innerHTML = "";
+  rows.sort((a, b) => (a.price ?? 1e9) - (b.price ?? 1e9)).forEach((r) => {
+    const d = document.createElement("div");
+    d.className = "r";
+    const val = r.status === "loading" ? "טוען…" : r.status === "fail" ? "לא נמצא" : fmt(r.price);
+    const diff = r.status === "done" && curPrice ? ` (${r.price < curPrice ? "-" : "+"}${fmt(Math.abs(curPrice - r.price))})` : "";
+    d.innerHTML = `<a href="${r.url}" target="_blank">${r.name}</a><span class="${r.price === best ? "best" : ""}">${val}${diff}</span>`;
+    $("results").appendChild(d);
+  });
 }
 
 $("go").addEventListener("click", async () => {
@@ -68,7 +76,12 @@ $("go").addEventListener("click", async () => {
     return;
   }
   await chrome.storage.local.set({ from: v.from });
-  links(v).forEach((url) => chrome.tabs.create({ url, active: false }));
+  $("status").textContent = "בודק אתרים ברקע, זה לוקח עד חצי דקה…";
+  chrome.runtime.sendMessage({ type: "compare", params: v });
 });
 
+chrome.storage.onChanged.addListener((c, area) => {
+  if (area === "session" && c.results) render(c.results.newValue);
+});
+chrome.storage.session.get("results").then((s) => render(s.results));
 init();
