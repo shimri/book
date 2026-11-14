@@ -55,7 +55,9 @@ async function init() {
   if (!Array.isArray(state.sites)) state.sites = Object.keys(SITE_UI);
   paintUI();
   try {
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    // ?tabId=<n> lets automated tests point the popup at a specific tab (the toolbar icon can't be clicked in tests).
+    const forced = new URLSearchParams(location.search).get("tabId");
+    const [tab] = forced ? [{ id: +forced }] : await chrome.tabs.query({ active: true, currentWindow: true });
     const [{ result }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: scrapePage });
     const p = parsePage(result);
     if (p.dep) $("dep").value = p.dep;
